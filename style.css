@@ -1080,6 +1080,46 @@ h2.section-title {
   text-align: justify;
 }
 
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.project-section-title {
+  color: var(--blue-light);
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.project-section-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.project-section-list li {
+  margin-bottom: 0.25rem;
+  text-align: justify;
+}
+
+.project-section-list li strong {
+  color: var(--text-primary);
+}
+
 .project-tags { margin-top: auto; }
 
 /* ─── Project categories ─────────────────────────────── */
