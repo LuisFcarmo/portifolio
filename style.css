@@ -130,14 +130,32 @@ section {
   50% { transform: translateY(5px); }
 }
 
-.hero-anim,
-.reveal,
-.js .hero-anim,
-.js .reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-  transition: none !important;
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-anim {
+  opacity: 0;
+  animation: heroFadeIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-anim-1 { animation-delay: 40ms; }
+.hero-anim-2 { animation-delay: 90ms; }
+.hero-anim-3 { animation-delay: 140ms; }
+.hero-anim-4 { animation-delay: 190ms; }
+.hero-anim-5 { animation-delay: 240ms; }
+.hero-anim-6 { animation-delay: 290ms; }
+
+.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 /* ─── Navigation ─────────────────────────────────────────── */
@@ -264,18 +282,9 @@ nav {
   cursor: pointer;
 }
 
-.nav-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  margin: 4px auto;
-  border-radius: 99px;
-  background: currentColor;
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-
-.menu-open .nav-toggle span:first-child { transform: translateY(3px) rotate(45deg); }
-.menu-open .nav-toggle span:last-child { transform: translateY(-3px) rotate(-45deg); }
+.nav-toggle .close-icon { display: none; }
+.menu-open .nav-toggle .hamburger-icon { display: none; }
+.menu-open .nav-toggle .close-icon { display: block; }
 
 /* ─── Hero ───────────────────────────────────────────────── */
 #hero {
