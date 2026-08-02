@@ -38,12 +38,17 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-width: 320px;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   overflow-x: hidden;
+  position: relative;
   font-family: 'Inter', sans-serif;
   color: var(--text-primary);
   background:
@@ -95,13 +100,16 @@ a { color: inherit; }
 
 /* ─── Layout ─────────────────────────────────────────────── */
 .container {
-  width: min(100%, var(--content-max));
+  width: 100%;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding-inline: clamp(1.25rem, 3vw, 2rem);
+  padding-inline: clamp(1.15rem, 4vw, 2rem);
+  box-sizing: border-box;
 }
 
 section {
   position: relative;
+  overflow: hidden;
   padding-block: clamp(5.25rem, 9vw, 8.5rem);
   scroll-margin-top: 5.5rem;
 }
@@ -294,6 +302,7 @@ nav {
   padding-top: clamp(9rem, 15vh, 11rem);
   padding-bottom: clamp(7rem, 11vh, 9rem);
   isolation: isolate;
+  overflow: hidden;
 }
 
 #hero::before {
@@ -308,6 +317,7 @@ nav {
   background: radial-gradient(circle, rgba(79, 140, 255, 0.22), rgba(79, 140, 255, 0.05) 56%, transparent 72%);
   content: '';
   filter: blur(3px);
+  pointer-events: none;
 }
 
 .hero-label,
@@ -1581,7 +1591,7 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
   #hero { min-height: auto; padding-top: 7rem; padding-bottom: 5rem; }
   .about-metrics { flex-direction: column; gap: 1rem; }
   .about-metric + .about-metric { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); padding-top: 1rem; }
-  #hero::before { top: 6rem; right: -7rem; width: 21rem; }
+  #hero::before { display: none !important; }
 
   h1.hero-name { font-size: clamp(2.1rem, 8.5vw, 3.8rem); word-break: break-word; }
   h2.section-title { font-size: clamp(1.75rem, 8vw, 2.4rem); }
