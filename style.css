@@ -1628,6 +1628,65 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
   h1.hero-name { font-size: clamp(1.85rem, 8vw, 2.4rem); }
   h2.section-title { font-size: 1.65rem; }
   .btn-primary, .btn-secondary { min-height: 44px; padding-inline: 0.85rem; font-size: 0.825rem; }
+/* ─── Card Expansion (Mobile Accordion) ─────────────────── */
+.card-toggle-btn {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .project-card .project-details {
+    display: none;
+    margin-top: 0.5rem;
+  }
+
+  .project-card.details-expanded .project-details {
+    display: flex;
+    animation: fadeUp 300ms ease forwards;
+  }
+
+  .exp-item .exp-bullets li.bullet-extra {
+    display: none;
+  }
+
+  .exp-item.details-expanded .exp-bullets li.bullet-extra {
+    display: list-item;
+    animation: fadeUp 300ms ease forwards;
+  }
+
+  .card-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    min-height: 44px;
+    margin-block: 0.65rem 0.25rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--blue-light);
+    background: rgba(79, 140, 255, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .card-toggle-btn:hover,
+  .card-toggle-btn:focus-visible {
+    border-color: var(--blue-border);
+    color: var(--text-primary);
+    background: var(--blue-dim);
+  }
+
+  .card-toggle-btn .toggle-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .details-expanded .card-toggle-btn .toggle-icon {
+    transform: rotate(180deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

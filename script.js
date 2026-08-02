@@ -21,6 +21,7 @@ async function loadSections() {
   // após carregar todos os componentes, inicializa comportamentos
   initNav();
   initReveal();
+  initCardExpansion();
 }
 
 /**
@@ -92,6 +93,69 @@ function initReveal() {
   }, { threshold: 0.08, rootMargin: '0px 0px -4%' });
 
   revealElements.forEach(el => observer.observe(el));
+}
+
+/**
+ * ─── Card Expansion (Mobile Accordion) ───────────────────
+ * Adiciona botões de expansão/recolhimento para cards extensos no mobile
+ */
+function initCardExpansion() {
+  // 1. Projetos com .project-details
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    const details = card.querySelector('.project-details');
+    if (!details) return;
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'card-toggle-btn';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.innerHTML = `
+      <span>Ver detalhes e responsabilidades</span>
+      <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    `;
+
+    card.insertBefore(toggleBtn, details);
+
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = card.classList.toggle('details-expanded');
+      toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+      toggleBtn.querySelector('span').textContent = isExpanded 
+        ? 'Ocultar detalhes' 
+        : 'Ver detalhes e responsabilidades';
+    });
+  });
+
+  // 2. Experiências com muitos bullets
+  const expCards = document.querySelectorAll('.exp-item');
+  expCards.forEach(card => {
+    const bullets = card.querySelectorAll('.exp-bullets li');
+    if (bullets.length > 3) {
+      const bulletsList = card.querySelector('.exp-bullets');
+      bullets.forEach((li, idx) => {
+        if (idx >= 2) li.classList.add('bullet-extra');
+      });
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'card-toggle-btn exp-toggle-btn';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.innerHTML = `
+        <span>Ver mais realizações (+${bullets.length - 2})</span>
+        <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      `;
+
+      bulletsList.after(toggleBtn);
+
+      toggleBtn.addEventListener('click', () => {
+        const isExpanded = card.classList.toggle('details-expanded');
+        toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+        toggleBtn.querySelector('span').textContent = isExpanded 
+          ? 'Ocultar realizações adicionais' 
+          : `Ver mais realizações (+${bullets.length - 2})`;
+      });
+    }
+  });
 }
 
 // ─── Boot ──────────────────────────────────────────────────
