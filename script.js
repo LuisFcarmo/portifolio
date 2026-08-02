@@ -22,6 +22,9 @@ async function loadSections() {
   initNav();
   initCardExpansion();
   initCopyToClipboard();
+  initTypedText();
+  initTilt();
+  initDataParticles();
 }
 
 /**
@@ -218,6 +221,155 @@ function initCopyToClipboard() {
       }
     });
   });
+}
+
+/**
+ * ─── Typed.js: Hero dynamic role ──────────────────────────
+ */
+function initTypedText() {
+  const el = document.getElementById('hero-typed-text');
+  if (!el || typeof Typed === 'undefined') return;
+
+  new Typed('#hero-typed-text', {
+    strings: [
+      'Engenheiro de Dados &amp; Desenvolvedor Backend',
+      'Arquitetura em Nuvem (AWS + Terraform)',
+      'Pipelines ETL &amp; Orquestração em Alta Escala',
+      'IA Aplicada &amp; Engenharia de Dados'
+    ],
+    typeSpeed: 45,
+    backSpeed: 25,
+    backDelay: 2200,
+    startDelay: 400,
+    loop: true,
+    showCursor: false
+  });
+}
+
+/**
+ * ─── 3D Tilt: Terminal & Project cards ────────────────────
+ */
+function initTilt() {
+  if (typeof VanillaTilt === 'undefined') return;
+
+  // Efeito 3D Tilt com brilho (glare) exclusivo para o Terminal do Hero
+  const terminal = document.querySelector('.hero-terminal');
+  if (terminal) {
+    VanillaTilt.init(terminal, {
+      max: 6,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.18,
+      scale: 1.02
+    });
+  }
+}
+
+/**
+ * ─── Canvas Data Graph Particles ─────────────────────────
+ * Fundo de partículas com nós de dados e conexões em tempo real
+ */
+function initDataParticles() {
+  const canvas = document.getElementById('data-particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let width = (canvas.width = canvas.parentElement.offsetWidth || window.innerWidth);
+  let height = (canvas.height = canvas.parentElement.offsetHeight || 600);
+
+  const particles = [];
+  const particleCount = Math.min(Math.floor(width / 24), 40);
+  const mouse = { x: null, y: null, radius: 140 };
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+    height = canvas.height = canvas.parentElement.offsetHeight || 600;
+  });
+
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.radius = Math.random() * 1.6 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * 1.2;
+          this.y -= (dy / dist) * force * 1.2;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(79, 140, 255, 0.5)';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 120;
+
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.22;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(79, 140, 255, ${alpha})`;
+          ctx.lineWidth = 0.75;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
 
 // ─── Boot ──────────────────────────────────────────────────
