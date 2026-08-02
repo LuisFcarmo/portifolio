@@ -3,7 +3,7 @@
 
     <p class="section-label reveal">Projetos</p>
     <h2 class="section-title reveal">O que estou construindo</h2>
-    <p class="section-desc reveal">Projetos públicos desenvolvidos com foco em arquitetura, qualidade e impacto real.</p>
+    <p class="section-desc reveal">Projetos com ownership pleno — do provisionamento de infraestrutura à camada de IA.</p>
 
     <div class="projects-grid">
 
@@ -12,46 +12,56 @@
         <div class="project-card-header">
           <span class="project-status">Em desenvolvimento</span>
           <div class="project-links-top">
-            <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener" class="project-icon-link" aria-label="Ver no GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-            </a>
+            <span class="project-icon-link" aria-label="Repositório privado" title="Repositório privado">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </span>
           </div>
         </div>
         <h3 class="project-title">AutoTED</h3>
         <p class="project-desc">
-          Automação inteligente para coleta e processamento de dados de editais públicos. Pipeline ETL completo com crawler, parsing de documentos e consolidação em relatórios estruturados para tomada de decisão.
+          Projeto pessoal com <strong>responsabilidade total em infraestrutura e engenharia de dados</strong>.
+          Arquitetei o ambiente cloud (AWS + Terraform), implementei os crawlers de coleta, desenhei o
+          pipeline ETL de ponta a ponta — parsing, transformação e carga — e expus os dados via API REST.
+          Do provisionamento da infra ao dado estruturado, sem dependência de equipe. Repositório privado.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Terraform</span>
           <span class="tag">Scrapy</span>
-          <span class="tag">ETL</span>
           <span class="tag">FastAPI</span>
           <span class="tag">PostgreSQL</span>
           <span class="tag">Docker</span>
         </div>
       </div>
 
-      <!-- ─── Data Lake Monitor ─────────────────────── -->
-      <div class="project-card reveal d1" id="project-datalake-monitor">
+      <!-- ─── Plataforma corporativa (confidencial) ─ -->
+      <div class="project-card reveal d1" id="project-ingestao">
         <div class="project-card-header">
-          <span class="project-status">Em desenvolvimento</span>
+          <span class="project-status project-status--production">Em produção</span>
           <div class="project-links-top">
-            <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener" class="project-icon-link" aria-label="Ver no GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-            </a>
+            <span class="project-icon-link" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </span>
           </div>
         </div>
-        <h3 class="project-title">Lakehouse Monitor</h3>
+        <h3 class="project-title">Plataforma de Dados Corporativa</h3>
         <p class="project-desc">
-          Dashboard de observabilidade para pipelines de dados na AWS com Arquitetura Medallion. Monitora qualidade de dados, latência de DAGs do Airflow e custos de infraestrutura em tempo real via Grafana.
+          Plataforma em produção com atuação simultânea em <strong>IA, Engenharia de Dados e DevOps</strong>.
+          Arquiteto e mantenho a infraestrutura AWS (Batch, Fargate, S3) via Terraform, orquestro
+          <strong>+90.000 jobs diários</strong> no Airflow com monitoramento e reexecução automática,
+          integro IA aplicada via embeddings e busca semântica, e desenvolvo a API de orquestração
+          com feature flags em FastAPI. Responsabilidade transversal sobre todo o stack. Projeto corporativo confidencial.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
           <span class="tag">AWS</span>
           <span class="tag">Airflow</span>
           <span class="tag">Terraform</span>
-          <span class="tag">Grafana</span>
-          <span class="tag">Loki</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag">Scrapy</span>
+          <span class="tag">Docker</span>
         </div>
       </div>
 

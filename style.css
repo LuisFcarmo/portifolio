@@ -1028,6 +1028,18 @@ h2.section-title {
   content: '';
 }
 
+.project-status--production {
+  border-color: rgba(74, 222, 128, 0.32);
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+}
+
+.project-status--private {
+  border-color: rgba(170, 187, 210, 0.22);
+  color: var(--text-muted);
+  background: rgba(170, 187, 210, 0.05);
+}
+
 .project-links-top { display: flex; gap: 0.5rem; }
 
 .project-icon-link {
