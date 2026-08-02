@@ -130,37 +130,15 @@ section {
   50% { transform: translateY(5px); }
 }
 
-.hero-anim {
-  opacity: 1;
-}
-
-.js .hero-anim {
-  opacity: 0;
-  animation: fadeUp 620ms cubic-bezier(0.2, 0.65, 0.3, 1) forwards;
-}
-
-.hero-anim-1 { animation-delay: 80ms; }
-.hero-anim-2 { animation-delay: 180ms; }
-.hero-anim-3 { animation-delay: 280ms; }
-.hero-anim-4 { animation-delay: 380ms; }
-.hero-anim-5 { animation-delay: 480ms; }
-.hero-anim-6 { animation-delay: 580ms; }
-
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
+.hero-anim,
+.reveal,
+.js .hero-anim,
 .js .reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 560ms ease, transform 560ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
 }
-
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal.d1 { transition-delay: 80ms; }
-.reveal.d2 { transition-delay: 160ms; }
-.reveal.d3 { transition-delay: 240ms; }
 
 /* ─── Navigation ─────────────────────────────────────────── */
 nav {
@@ -381,6 +359,9 @@ h1.hero-name {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.8;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .hero-meta {
@@ -652,6 +633,13 @@ h2.section-title {
   border-radius: var(--radius-sm);
   background: rgba(13, 18, 28, 0.5);
   backdrop-filter: blur(8px);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.pillar-card:hover {
+  border-color: var(--blue-border);
+  box-shadow: 0 10px 24px rgba(79, 140, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 .pillar-title {
@@ -714,6 +702,9 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.85;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .about-text p + p { margin-top: 1.15rem; }
@@ -871,6 +862,9 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.925rem;
   line-height: 1.72;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .exp-bullets li::before {
@@ -1116,6 +1110,9 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .project-details {
@@ -1151,6 +1148,9 @@ h2.section-title {
 
 .project-section-list li {
   margin-bottom: 0.25rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .project-section-list li strong {
@@ -1358,6 +1358,9 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.96rem;
   line-height: 1.78;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
 }
 
 .contact-copy strong { color: var(--text-primary); font-weight: 600; }
@@ -1634,13 +1637,17 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
 }
 
 @media (max-width: 640px) {
+  .nav-cta { display: none !important; }
+
   .hero-tagline,
   .about-text p,
   .exp-bullets li,
   .project-desc,
   .project-section-list li,
   .contact-copy {
-    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: none;
   }
 
   .project-card .project-details {
@@ -1710,6 +1717,50 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
   .details-expanded .card-toggle-btn .toggle-icon {
     transform: rotate(180deg);
   }
+}
+
+/* ─── Tactile Feedback ───────────────────────────────────── */
+.btn-primary:active,
+.btn-secondary:active,
+.nav-cta:active,
+.card-toggle-btn:active,
+.contact-link:active,
+.project-icon-link:active,
+.tag:active,
+.pill:active {
+  transform: scale(0.97) !important;
+  transition: transform 60ms ease !important;
+}
+
+/* ─── Copy Toast Banner ──────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--blue-border);
+  border-radius: var(--radius-md);
+  color: #fff;
+  background: rgba(13, 17, 25, 0.96);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 140, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {

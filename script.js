@@ -20,8 +20,8 @@ async function loadSections() {
 
   // após carregar todos os componentes, inicializa comportamentos
   initNav();
-  initReveal();
   initCardExpansion();
+  initCopyToClipboard();
 }
 
 /**
@@ -71,29 +71,7 @@ function initNav() {
   sections.forEach(s => sectionObserver.observe(s));
 }
 
-/**
- * ─── Scroll Reveal ────────────────────────────────────────
- */
-function initReveal() {
-  const revealElements = document.querySelectorAll('.reveal');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-    revealElements.forEach(el => el.classList.add('visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -4%' });
-
-  revealElements.forEach(el => observer.observe(el));
-}
 
 /**
  * ─── Card Expansion (Mobile Accordion) ───────────────────
@@ -189,6 +167,57 @@ function initCardExpansion() {
       });
     }
   }
+}
+
+/**
+ * ─── Copy to Clipboard Toast ──────────────────────────────
+ * Feedback visual instantâneo ao clicar em e-mail ou telefone
+ */
+function initCopyToClipboard() {
+  const contactItems = document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]');
+  if (!contactItems.length) return;
+
+  let toast = document.querySelector('.copy-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'copy-toast';
+    toast.setAttribute('aria-live', 'polite');
+    toast.innerHTML = `
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <span class="copy-toast-msg">Copiado para a área de transferência!</span>
+    `;
+    document.body.appendChild(toast);
+  }
+
+  let toastTimer;
+
+  contactItems.forEach(item => {
+    item.addEventListener('click', () => {
+      let textToCopy = '';
+      const href = item.getAttribute('href') || '';
+      
+      if (href.startsWith('mailto:')) {
+        textToCopy = href.replace('mailto:', '').trim();
+      } else if (href.startsWith('tel:')) {
+        textToCopy = href.replace('tel:', '').replace('+55', '').trim();
+      }
+
+      if (!textToCopy) textToCopy = item.textContent.trim();
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const msg = toast.querySelector('.copy-toast-msg');
+          if (msg) msg.textContent = `"${textToCopy}" copiado!`;
+
+          toast.classList.add('show');
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => {
+            toast.classList.remove('show');
+          }, 2000);
+        }).catch(() => {});
+      }
+    });
+  });
 }
 
 // ─── Boot ──────────────────────────────────────────────────
