@@ -381,6 +381,8 @@ h1.hero-name {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.8;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .hero-meta {
@@ -714,6 +716,8 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.85;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .about-text p + p { margin-top: 1.15rem; }
@@ -871,6 +875,8 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.925rem;
   line-height: 1.72;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .exp-bullets li::before {
@@ -1116,7 +1122,8 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.7;
-  text-align: left;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .project-details {
@@ -1152,7 +1159,8 @@ h2.section-title {
 
 .project-section-list li {
   margin-bottom: 0.25rem;
-  text-align: left;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .project-section-list li strong {
@@ -1360,6 +1368,8 @@ h2.section-title {
   color: var(--text-secondary);
   font-size: 0.96rem;
   line-height: 1.78;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .contact-copy strong { color: var(--text-primary); font-weight: 600; }
@@ -1650,6 +1660,20 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
 
   .exp-item.details-expanded .exp-bullets li.bullet-extra {
     display: list-item;
+    animation: fadeUp 300ms ease forwards;
+  }
+
+  .about-text .about-extra {
+    display: none;
+  }
+
+  .about-text.details-expanded .about-extra {
+    display: block;
+    animation: fadeUp 300ms ease forwards;
+  }
+
+  .about-text.details-expanded .about-pillars {
+    display: grid;
     animation: fadeUp 300ms ease forwards;
   }
 

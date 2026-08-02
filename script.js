@@ -156,6 +156,39 @@ function initCardExpansion() {
       });
     }
   });
+
+  // 3. Resumo Profissional (.about-text)
+  const aboutText = document.querySelector('.about-text');
+  if (aboutText) {
+    const extraParagraphs = aboutText.querySelectorAll('p:nth-of-type(n+2), .about-pillars');
+    if (extraParagraphs.length > 0) {
+      extraParagraphs.forEach(el => el.classList.add('about-extra'));
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'card-toggle-btn about-toggle-btn';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.innerHTML = `
+        <span>Ver resumo profissional completo</span>
+        <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      `;
+
+      const firstP = aboutText.querySelector('p');
+      if (firstP) {
+        firstP.after(toggleBtn);
+      } else {
+        aboutText.prepend(toggleBtn);
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isExpanded = aboutText.classList.toggle('details-expanded');
+        toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+        toggleBtn.querySelector('span').textContent = isExpanded 
+          ? 'Ocultar resumo adicional' 
+          : 'Ver resumo profissional completo';
+      });
+    }
+  }
 }
 
 // ─── Boot ──────────────────────────────────────────────────
