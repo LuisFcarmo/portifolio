@@ -1498,36 +1498,54 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
   .hero-visual { display: none; }
 
   .nav-links {
-    position: absolute;
-    top: calc(100% + 0.65rem);
-    right: 1.25rem;
-    left: 1.25rem;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
     display: none;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.35rem;
+    flex-direction: column;
+    gap: 0;
     margin: 0;
-    padding: 0.65rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-md);
-    background: rgba(13, 17, 25, 0.98);
-    box-shadow: var(--shadow-card-hover);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    padding: 0.5rem 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-strong);
+    background: #080a0f;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    z-index: 999;
   }
 
-  .menu-open .nav-links { display: grid; }
+  .menu-open .nav-links { display: flex; }
+
+  .nav-links li {
+    width: 100%;
+    list-style: none;
+  }
 
   .nav-links a {
     display: flex;
     align-items: center;
-    min-height: 44px;
-    padding: 0.65rem 0.9rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(170, 187, 210, 0.08);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary) !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: 0;
   }
 
   .nav-links a:hover,
-  .nav-links a.active { background: var(--blue-dim); }
+  .nav-links a:focus,
+  .nav-links a.active {
+    color: var(--blue-light) !important;
+    background: var(--blue-dim);
+  }
   .nav-links a::after { display: none; }
 
   .nav-actions { margin-left: auto; }
@@ -1608,7 +1626,6 @@ footer a:hover { color: var(--blue-light); text-decoration-color: currentColor; 
 @media (max-width: 480px) {
   .nav-cta { min-width: 0; padding-inline: 0.75rem; }
   .nav-cta span { display: none; }
-  .nav-links { grid-template-columns: 1fr; }
 
   .hero-actions { display: grid; width: 100%; }
   .hero-actions .btn-primary,
