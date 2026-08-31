@@ -13,13 +13,12 @@
         <span class="projects-category-line"></span>
       </div>
 
-      <!-- AutoTED (Oculto temporariamente) -->
-      <!-- Para voltar a exibir no futuro, remova o style="display: none;" -->
-      <div class="project-card project-card--solo reveal is-hidden" id="project-autoted" style="display: none;">
+      <!-- AutoTED -->
+      <div class="project-card project-card--solo reveal" id="project-autoted">
         <div class="project-card-header">
           <div class="project-header-meta">
-            <span class="project-status">Em desenvolvimento</span>
-            <span class="project-role">Eng. de Dados &amp; DevOps · Arquiteto de Solução</span>
+            <span class="project-status project-status--production">Em produção</span>
+            <span class="project-role">Tech Lead · Eng. de Dados &amp; DevOps</span>
           </div>
           <div class="project-links-top">
             <span class="project-company" title="Universidade Federal de Goiás / PROAD">
@@ -31,35 +30,35 @@
             </span>
           </div>
         </div>
-        <h3 class="project-title">AutoTED — Plataforma de Automação e Orquestração</h3>
+        <h3 class="project-title">AutoTED — Plataforma de Automação, Ingestão e Conciliação</h3>
         <p class="project-desc">
-          Plataforma de extração, ingestão e observabilidade de dados de licitações e convênios públicos, <strong>projetada e desenvolvida do zero por mim</strong>.
+          Plataforma de extração, conciliação contábil/financeira e observabilidade de convênios públicos (TEDs), <strong>projetada e desenvolvida do zero por mim</strong> para cruzar e auditar dados heterogêneos entre SIPAC e Tesouro Gerencial.
         </p>
 
         <div class="project-details">
           <div class="project-section">
             <span class="project-section-title">Minhas Responsabilidades &amp; Atuação</span>
             <ul class="project-section-list">
-              <li><strong>Arquitetura &amp; Leadership Técnico:</strong> Concepção integral do ecossistema de dados, escolha da stack e definição das diretrizes de <i>Security by Design</i> e Clean Architecture.</li>
-              <li><strong>DevOps &amp; Infraestrutura:</strong> Configuração de servidores (LAMCAD/UFG), automação de CI/CD via GitHub Actions Self-Hosted Runner com scan de segurança (Trivy), gateway Nginx, SSL e firewall.</li>
-              <li><strong>Engenharia de Dados &amp; BI:</strong> Criação dos pipelines de extração com Gmail API, orquestração no Prefect 2.x, modelagem relacional no PostgreSQL e disponibilização de dashboards no Metabase.</li>
+              <li><strong>Arquitetura &amp; Leadership Técnico:</strong> Concepção integral do ecossistema de dados, esteira de processamento e reconciliação automatizada de execuções orçamentárias (NC, NE, OB).</li>
+              <li><strong>DevOps &amp; Infraestrutura:</strong> Servidores dedicados (LAMCAD/UFG), automação de CI/CD via GitHub Actions Self-Hosted Runner com scan de segurança (Trivy), gateway Nginx, SSL e redes Docker isoladas.</li>
+              <li><strong>Engenharia de Dados &amp; BI:</strong> Pipelines de ingestão automatizados, orquestração de fluxos no Prefect 2.x, modelagem analítica no PostgreSQL e camada de BI com dashboards no Metabase.</li>
             </ul>
           </div>
 
           <div class="project-section">
             <span class="project-section-title">O que foi Construído</span>
             <ul class="project-section-list">
-              <li><strong>Orquestração Robusta:</strong> Workflows automatizados no Prefect Server 2.x com suporte a tentativas (retries) e logs centralizados.</li>
-              <li><strong>Segurança Avançada:</strong> Contêineres isolados (rede `internal_net`), socket Docker read-only, backups diários automáticos rotativos e rate limiting no gateway.</li>
-              <li><strong>Esteira de CI/CD:</strong> Deploy automatizado zero-downtime a cada push, integrando validação de segurança e atualização de imagens.</li>
+              <li><strong>Motor de Conciliação e Auditoria:</strong> Regras de negócio e rotinas analíticas em SQL para reconciliação automática de movimentações orçamentárias e financeiras entre sistemas governamentais.</li>
+              <li><strong>Orquestração &amp; Observabilidade:</strong> Workflows automatizados no Prefect Server 2.x com suporte a retries, tratamento de falhas e logs centralizados.</li>
+              <li><strong>Segurança &amp; Resiliência:</strong> Contêineres isolados (rede `internal_net`), socket Docker read-only, backups diários automáticos rotativos e rate limiting no gateway.</li>
             </ul>
           </div>
         </div>
         <div class="project-tags">
           <span class="tag"><i class="devicon-python-plain colored"></i> Python 3.11</span>
           <span class="tag"><i class="devicon-python-plain colored"></i> Prefect 2.x</span>
-          <span class="tag"><i class="devicon-google-plain colored"></i> Gmail API</span>
           <span class="tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL 15</span>
+          <span class="tag"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
           <span class="tag"><i class="devicon-java-plain colored"></i> Metabase BI</span>
           <span class="tag"><i class="devicon-docker-plain colored"></i> Docker Compose</span>
           <span class="tag"><i class="devicon-nginx-original colored"></i> Nginx</span>
@@ -84,7 +83,7 @@
             </span>
           </div>
         </div>
-        <h3 class="project-title">Plataforma Ecossecular de Dados, IA &amp; Observabilidade</h3>
+        <h3 class="project-title">Plataforma Corporativa de Dados, IA &amp; Observabilidade</h3>
         <p class="project-desc">
           Ecossistema corporativo de dados distribuídos de alta escala e missão crítica na <strong>Positivo Tecnologia</strong>, cobrindo o ciclo completo: da ingestão massiva e engenharia de dados à IA aplicada, orquestração e monitoramento em nuvem.
         </p>
@@ -102,7 +101,7 @@
           <div class="project-section">
             <span class="project-section-title">O que foi Construído (Arquitetura de Microsserviços)</span>
             <ul class="project-section-list">
-              <li><strong>Camada de IA &amp; Agentes:</strong> Microsserviços de IA (API &amp; Core Service) integrados ao AWS Bedrock e agentes autônomos para tomada de decisão.</li>
+              <li><strong>Camada de IA &amp; Agentes:</strong> Microsserviços de IA (API &amp; Core Service) integrados ao AWS Bedrock e agentes autônomos para tomada de decisão e enriquecimento de dados.</li>
               <li><strong>Camada de Dados &amp; Ingestão:</strong> Motores de raspagem/carga distribuída, filas SQS, ETLs Serverless no AWS Glue e consultas via Athena.</li>
               <li><strong>Orquestração &amp; Observabilidade:</strong> Malha produtiva no Airflow e Kubernetes/Argo, handlers de logs/métricas no Grafana e SDKs internos compartilhados.</li>
             </ul>
