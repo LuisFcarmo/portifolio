@@ -1258,40 +1258,6 @@ h2.section-title {
   grid-column: 1 / -1;
 }
 
-/* Featured / Flagship project card */
-.project-card--featured {
-  border-color: rgba(56, 189, 248, 0.35);
-  background: linear-gradient(145deg, rgba(14, 25, 42, 0.95), rgba(12, 18, 28, 0.88));
-  box-shadow: 0 4px 24px rgba(56, 189, 248, 0.08), var(--shadow-card);
-}
-
-.project-card--featured:hover {
-  border-color: rgba(56, 189, 248, 0.65);
-  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.16), var(--shadow-card);
-}
-
-/* Featured tag badge */
-.project-featured-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.22rem 0.6rem;
-  border: 1px solid rgba(251, 191, 36, 0.4);
-  border-radius: var(--radius-sm);
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.1);
-  font-family: var(--font-mono);
-  font-size: 0.63rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.project-featured-tag svg {
-  flex-shrink: 0;
-  color: #fbbf24;
-}
-
 /* Company link in experience timeline */
 .company-link {
   display: inline-flex;
