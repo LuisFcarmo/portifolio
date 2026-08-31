@@ -232,10 +232,10 @@ function initTypedText() {
 
   new Typed('#hero-typed-text', {
     strings: [
-      'Engenheiro de Dados &amp; Desenvolvedor Backend',
-      'Arquitetura em Nuvem (AWS + Terraform)',
-      'Pipelines ETL &amp; Orquestração em Alta Escala',
-      'IA Aplicada &amp; Engenharia de Dados'
+      'Data Platform Engineer Pleno',
+      'Orquestração &amp; Pipelines em Alta Escala (+90k jobs)',
+      'Infraestrutura Cloud &amp; IaC (AWS + Terraform)',
+      'IA Aplicada, LLMs &amp; Agentes Autônomos'
     ],
     typeSpeed: 45,
     backSpeed: 25,
