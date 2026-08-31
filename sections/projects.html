@@ -13,8 +13,67 @@
         <span class="projects-category-line"></span>
       </div>
 
+      <!-- Plataforma Corporativa (Positivo Tecnologia - Flagship) -->
+      <div class="project-card project-card--solo project-card--featured reveal" id="project-ingestao">
+        <div class="project-card-header">
+          <div class="project-header-meta">
+            <span class="project-featured-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Projeto Principal
+            </span>
+            <span class="project-status project-status--production">Em produção</span>
+            <span class="project-role">Engenheiro de Dados &amp; IA Pleno · DevOps</span>
+          </div>
+          <div class="project-links-top">
+            <span class="project-company" title="Positivo Tecnologia S/A">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener">Positivo Tecnologia S/A ↗</a>
+            </span>
+            <span class="project-icon-link" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </span>
+          </div>
+        </div>
+        <h3 class="project-title">Plataforma Corporativa de Dados, IA &amp; Observabilidade</h3>
+        <p class="project-desc">
+          Ecossistema corporativo de dados distribuídos de alta escala e missão crítica na <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener" style="color: var(--blue-light); text-decoration: underline; text-underline-offset: 2px;">Positivo Tecnologia</a>, cobrindo o ciclo completo: da ingestão massiva e engenharia de dados à IA aplicada, orquestração e monitoramento em nuvem.
+        </p>
+
+        <div class="project-details">
+          <div class="project-section">
+            <span class="project-section-title">Minhas Responsabilidades &amp; Atuação</span>
+            <ul class="project-section-list">
+              <li><strong>IA &amp; Agentes Inteligentes:</strong> Desenvolvimento de microsserviços de IA, integração de LLMs e serviços gerenciados (AWS Bedrock), agentes autônomos (Agno Agents) e busca semântica com embeddings vetoriais.</li>
+              <li><strong>Engenharia de Dados &amp; Ingestão Massiva:</strong> Arquitetura de motores de extração de alto volume, consultas analíticas com AWS Glue e Athena, mensageria distribuída com SQS e gerenciamento de Data Lake.</li>
+              <li><strong>Orquestração &amp; DevOps Cloud:</strong> Gerenciamento da malha de DAGs em Apache Airflow operando <strong>+90.000 jobs diários</strong>, orquestração com Kubernetes &amp; Argo Workflows/CD, provisionamento IaC (AWS Batch, Fargate, EC2, S3, ECR, SQS) via Terraform e observabilidade no Grafana.</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <span class="project-section-title">O que foi Construído (Arquitetura de Microsserviços)</span>
+            <ul class="project-section-list">
+              <li><strong>Camada de IA &amp; Agentes:</strong> Microsserviços de IA (API &amp; Core Service) integrados ao AWS Bedrock e agentes autônomos para tomada de decisão e enriquecimento de dados.</li>
+              <li><strong>Camada de Dados &amp; Ingestão:</strong> Motores de raspagem/carga distribuída, filas SQS, ETLs Serverless no AWS Glue e consultas via Athena.</li>
+              <li><strong>Orquestração &amp; Observabilidade:</strong> Malha produtiva no Airflow e Kubernetes/Argo, handlers de logs/métricas no Grafana e SDKs internos compartilhados.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="tag"><i class="devicon-apacheairflow-plain colored"></i> Apache Airflow (+90k jobs/dia)</span>
+          <span class="tag"><i class="devicon-kubernetes-plain colored"></i> Kubernetes / Argo</span>
+          <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS (Batch, Fargate, EC2, S3, ECR, SQS, Glue, Athena)</span>
+          <span class="tag"><i class="devicon-openai-plain colored"></i> IA (AWS Bedrock, Agno Agents &amp; Embeddings)</span>
+          <span class="tag"><i class="devicon-terraform-plain colored"></i> Terraform (IaC)</span>
+          <span class="tag"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+          <span class="tag"><i class="devicon-grafana-plain colored"></i> Grafana / Observabilidade</span>
+          <span class="tag"><i class="devicon-docker-plain colored"></i> Docker</span>
+        </div>
+      </div>
+
       <!-- AutoTED -->
-      <div class="project-card project-card--solo reveal" id="project-autoted">
+      <div class="project-card project-card--solo reveal d1" id="project-autoted">
         <div class="project-card-header">
           <div class="project-header-meta">
             <span class="project-status project-status--production">Em produção</span>
@@ -63,61 +122,6 @@
           <span class="tag"><i class="devicon-docker-plain colored"></i> Docker Compose</span>
           <span class="tag"><i class="devicon-nginx-original colored"></i> Nginx</span>
           <span class="tag"><i class="devicon-githubactions-plain colored"></i> GitHub Actions (CI/CD)</span>
-        </div>
-      </div>
-
-      <!-- Plataforma Corporativa -->
-      <div class="project-card project-card--solo reveal d1" id="project-ingestao">
-        <div class="project-card-header">
-          <div class="project-header-meta">
-            <span class="project-status project-status--production">Em produção</span>
-            <span class="project-role">Engenheiro de Dados &amp; IA Pleno · DevOps</span>
-          </div>
-          <div class="project-links-top">
-            <span class="project-company" title="Positivo Tecnologia S/A">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-              Positivo Tecnologia
-            </span>
-            <span class="project-icon-link" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </span>
-          </div>
-        </div>
-        <h3 class="project-title">Plataforma Corporativa de Dados, IA &amp; Observabilidade</h3>
-        <p class="project-desc">
-          Ecossistema corporativo de dados distribuídos de alta escala e missão crítica na <strong>Positivo Tecnologia</strong>, cobrindo o ciclo completo: da ingestão massiva e engenharia de dados à IA aplicada, orquestração e monitoramento em nuvem.
-        </p>
-
-        <div class="project-details">
-          <div class="project-section">
-            <span class="project-section-title">Minhas Responsabilidades &amp; Atuação</span>
-            <ul class="project-section-list">
-              <li><strong>IA &amp; Agentes Inteligentes:</strong> Desenvolvimento de microsserviços de IA, integração de LLMs e serviços gerenciados (AWS Bedrock), agentes autônomos (Agno Agents) e busca semântica com embeddings vetoriais.</li>
-              <li><strong>Engenharia de Dados &amp; Ingestão Massiva:</strong> Arquitetura de motores de extração de alto volume, consultas analíticas com AWS Glue e Athena, mensageria distribuída com SQS e gerenciamento de Data Lake.</li>
-              <li><strong>Orquestração &amp; DevOps Cloud:</strong> Gerenciamento da malha de DAGs em Apache Airflow operando <strong>+90.000 jobs diários</strong>, orquestração com Kubernetes &amp; Argo Workflows/CD, provisionamento IaC (AWS Batch, Fargate, EC2, S3, ECR, SQS) via Terraform e observabilidade no Grafana.</li>
-            </ul>
-          </div>
-
-          <div class="project-section">
-            <span class="project-section-title">O que foi Construído (Arquitetura de Microsserviços)</span>
-            <ul class="project-section-list">
-              <li><strong>Camada de IA &amp; Agentes:</strong> Microsserviços de IA (API &amp; Core Service) integrados ao AWS Bedrock e agentes autônomos para tomada de decisão e enriquecimento de dados.</li>
-              <li><strong>Camada de Dados &amp; Ingestão:</strong> Motores de raspagem/carga distribuída, filas SQS, ETLs Serverless no AWS Glue e consultas via Athena.</li>
-              <li><strong>Orquestração &amp; Observabilidade:</strong> Malha produtiva no Airflow e Kubernetes/Argo, handlers de logs/métricas no Grafana e SDKs internos compartilhados.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="project-tags">
-          <span class="tag"><i class="devicon-python-plain colored"></i> Python</span>
-          <span class="tag"><i class="devicon-apacheairflow-plain colored"></i> Apache Airflow (+90k jobs/dia)</span>
-          <span class="tag"><i class="devicon-kubernetes-plain colored"></i> Kubernetes / Argo</span>
-          <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS (Batch, Fargate, EC2, S3, ECR, SQS, Glue, Athena)</span>
-          <span class="tag"><i class="devicon-openai-plain colored"></i> IA (AWS Bedrock, Agno Agents &amp; Embeddings)</span>
-          <span class="tag"><i class="devicon-terraform-plain colored"></i> Terraform (IaC)</span>
-          <span class="tag"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
-          <span class="tag"><i class="devicon-grafana-plain colored"></i> Grafana / Observabilidade</span>
-          <span class="tag"><i class="devicon-docker-plain colored"></i> Docker</span>
         </div>
       </div>
 
