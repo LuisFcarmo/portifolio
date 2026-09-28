@@ -1,0 +1,235 @@
+/* ─── Components ──────────────────────────────────────────────
+ * Peças reutilizadas em várias seções: botões, tags, status,
+ * botão de expandir (accordion mobile) e toast de cópia.
+ */
+
+/* ─── Buttons ────────────────────────────────────────────── */
+.nav-cta,
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.nav-cta {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  color: #fff;
+  background: var(--blue);
+  box-shadow: 0 8px 20px rgba(38, 99, 210, 0.2);
+}
+
+.nav-cta:hover,
+.btn-primary:hover {
+  color: #fff;
+  background: #5b97ff;
+  box-shadow: 0 12px 26px rgba(38, 99, 210, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.2rem;
+  color: #fff;
+  background: var(--blue);
+  box-shadow: 0 10px 24px rgba(38, 99, 210, 0.2);
+}
+
+.btn-secondary {
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  background: rgba(17, 23, 34, 0.48);
+}
+
+.btn-secondary:hover {
+  border-color: var(--blue-border);
+  color: var(--text-primary);
+  background: var(--blue-dim);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.btn-small {
+  min-height: 40px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.8rem;
+}
+
+/* ─── Tags & pills ───────────────────────────────────────── */
+.exp-tags,
+.project-tags,
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 32px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: rgba(8, 10, 15, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tag:hover,
+.pill:hover {
+  border-color: var(--blue-border);
+  color: var(--text-primary);
+  background: var(--blue-dim);
+  transform: translateY(-1px);
+}
+
+.tag i,
+.pill i {
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Ícones monocromáticos do devicon que somem no fundo escuro */
+.tag .devicon-mysql-original.colored,
+.pill .devicon-mysql-original.colored,
+.tag .devicon-nextjs-plain.colored,
+.pill .devicon-nextjs-plain.colored,
+.tag .devicon-linux-plain.colored,
+.pill .devicon-linux-plain.colored,
+.tag .devicon-django-plain.colored,
+.pill .devicon-django-plain.colored,
+.tag .devicon-sqlalchemy-plain.colored,
+.pill .devicon-sqlalchemy-plain.colored,
+.tag .devicon-github-original.colored,
+.pill .devicon-github-original.colored {
+  color: var(--text-secondary);
+}
+
+.pill.key {
+  border-color: var(--blue-border);
+  color: var(--text-primary);
+  background: var(--blue-dim);
+  font-weight: 600;
+}
+
+/* ─── Status dot ─────────────────────────────────────────── */
+.status-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+}
+
+/* ─── Card expansion (mobile accordion) ──────────────────── */
+/* O que cada seção esconde fica no CSS da seção; aqui só o botão. */
+.card-toggle-btn {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .card-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    min-height: 44px;
+    margin-block: 0.65rem 0.25rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    color: var(--blue-light);
+    background: rgba(79, 140, 255, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .card-toggle-btn:hover,
+  .card-toggle-btn:focus-visible {
+    border-color: var(--blue-border);
+    color: var(--text-primary);
+    background: var(--blue-dim);
+  }
+
+  .card-toggle-btn .toggle-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .details-expanded .card-toggle-btn .toggle-icon {
+    transform: rotate(180deg);
+  }
+}
+
+/* ─── Tactile feedback ───────────────────────────────────── */
+.btn-primary:active,
+.btn-secondary:active,
+.nav-cta:active,
+.card-toggle-btn:active,
+.tag:active,
+.pill:active {
+  transform: scale(0.97) !important;
+  transition: transform 60ms ease !important;
+}
+
+/* ─── Copy toast ─────────────────────────────────────────── */
+.copy-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--blue-border);
+  border-radius: var(--radius-md);
+  color: #fff;
+  background: rgba(13, 17, 25, 0.96);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 140, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.copy-toast svg { flex: 0 0 auto; color: var(--green); }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .btn-primary, .btn-secondary { min-height: 44px; padding-inline: 0.85rem; font-size: 0.825rem; }
+}

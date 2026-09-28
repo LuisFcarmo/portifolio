@@ -1,0 +1,53 @@
+/* ─── Stack ───────────────────────────────────────────────────
+ * Tabela de categorias; as pills vêm de components.css.
+ */
+#stack { background: var(--surface-section); }
+
+.stack-table {
+  padding-inline: clamp(1.15rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, rgba(17, 23, 34, 0.85), rgba(13, 17, 25, 0.75));
+  box-shadow: var(--shadow-card);
+}
+
+.stack-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 2.2fr) minmax(0, 9fr);
+  gap: 1.5rem;
+  align-items: baseline;
+  padding-block: 1.05rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stack-row:last-child { border-bottom: 0; }
+
+.stack-row-label {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.stack-row:hover .stack-row-label { color: var(--blue-light); }
+
+.stack-practices {
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.7;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .stack-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+}

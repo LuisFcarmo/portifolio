@@ -3,7 +3,7 @@
 
     <p class="section-label reveal">Projetos</p>
     <h2 class="section-title reveal">O que estou construindo</h2>
-    <p class="section-desc reveal">Projetos profissionais com ownership técnico completo — do provisionamento de infraestrutura à camada de IA.</p>
+    <p class="section-desc reveal">Projetos com ownership técnico de ponta a ponta, do provisionamento da infraestrutura à camada de consumo. Para cada um: o problema, a arquitetura e as decisões que tomei.</p>
 
     <div class="projects-grid">
 
@@ -13,174 +13,384 @@
         <span class="projects-category-line"></span>
       </div>
 
-      <!-- Plataforma Corporativa (Positivo Tecnologia) -->
-      <div class="project-card project-card--solo reveal" id="project-ingestao">
+      <!-- Plataforma de dados (Positivo Tecnologia) -->
+      <article class="project-card reveal" id="project-ingestao">
         <div class="project-card-header">
           <div class="project-header-meta">
             <span class="project-status project-status--production">Em produção</span>
             <span class="project-role">Data Platform Engineer Pleno</span>
           </div>
           <div class="project-links-top">
-            <span class="project-company" title="Positivo Tecnologia S/A">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-              <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener">Positivo Tecnologia S/A ↗</a>
+            <span class="project-company">
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener">Positivo Tecnologia ↗</a>
             </span>
-            <span class="project-icon-link" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span class="project-icon-link" role="img" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             </span>
           </div>
         </div>
-        <h3 class="project-title">Plataforma Corporativa de Dados, IA &amp; Observabilidade</h3>
-        <p class="project-desc">
-          Ecossistema corporativo de dados distribuídos de alta escala e missão crítica na <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener" style="color: var(--blue-light); text-decoration: underline; text-underline-offset: 2px;">Positivo Tecnologia</a>, cobrindo o ciclo completo: da ingestão massiva e engenharia de dados à IA aplicada, orquestração e monitoramento em nuvem.
-        </p>
+
+        <h3 class="project-title">Plataforma de Dados, IA &amp; Observabilidade</h3>
+
+        <div class="project-brief">
+          <div class="project-brief-item">
+            <span class="project-section-title">Problema</span>
+            <p>A plataforma depende de dados de fontes externas heterogêneas (portais governamentais e e-commerces como Mercado Livre, Dell e Lenovo), publicados em HTML, PDF e XLS/CSV, que precisam ser coletados continuamente e sem operação manual.</p>
+          </div>
+          <div class="project-brief-item">
+            <span class="project-section-title">Solução</span>
+            <p>Uma malha de ingestão orquestrada no Apache Airflow, com workers em AWS Batch e Fargate, data lake no S3 consultado via Glue e Athena, e uma camada de IA que enriquece e busca o dado coletado.</p>
+          </div>
+        </div>
+
+        <figure class="pipeline">
+          <figcaption class="pipeline-caption">Arquitetura</figcaption>
+          <ol class="pipeline-flow">
+            <li class="pipeline-stage">
+              <span class="stage-name">Fontes</span>
+              <span class="stage-tech">Portais governamentais · e-commerces</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Coleta</span>
+              <span class="stage-tech">Scrapy · Playwright · Selenium · API FastAPI</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Processamento</span>
+              <span class="stage-tech">SQS · AWS Batch · Fargate · parsing PDF/XLS/CSV</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Data lake</span>
+              <span class="stage-tech">S3 · Glue · Athena</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">IA &amp; busca</span>
+              <span class="stage-tech">Bedrock · Agno · embeddings</span>
+            </li>
+          </ol>
+          <ul class="pipeline-rails">
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>Apache Airflow (90k+ jobs/dia) · Kubernetes · Argo</span></li>
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Infra &amp; ops</span><span>Terraform · Grafana · Unleash (feature flags)</span></li>
+          </ul>
+        </figure>
 
         <div class="project-details">
           <div class="project-section">
-            <span class="project-section-title">Minhas Responsabilidades &amp; Atuação</span>
+            <span class="project-section-title">Decisões de engenharia</span>
             <ul class="project-section-list">
-              <li><strong>IA &amp; Agentes Inteligentes:</strong> Desenvolvimento de microsserviços de IA, integração de LLMs e serviços gerenciados (AWS Bedrock), agentes autônomos (Agno Agents) e busca semântica com embeddings vetoriais.</li>
-              <li><strong>Engenharia de Dados &amp; Ingestão Massiva:</strong> Arquitetura de motores de extração de alto volume, consultas analíticas com AWS Glue e Athena, mensageria distribuída com SQS e gerenciamento de Data Lake.</li>
-              <li><strong>Orquestração &amp; DevOps Cloud:</strong> Gerenciamento da malha de DAGs em Apache Airflow operando <strong>+90.000 jobs diários</strong>, orquestração com Kubernetes &amp; Argo Workflows/CD, provisionamento IaC (AWS Batch, Fargate, EC2, S3, ECR, SQS) via Terraform e observabilidade no Grafana.</li>
+              <li><strong>Infraestrutura só como código:</strong> toda a stack AWS (Batch, Fargate, EC2, S3, ECR, SQS, Glue, Athena) é provisionada em Terraform, sem configuração manual em produção.</li>
+              <li><strong>Feature flags na coleta:</strong> a API interna em FastAPI centraliza as coletas síncronas e usa Unleash para ativar mudanças sem risco de downtime.</li>
+              <li><strong>Validação antes da carga:</strong> o ETL faz parsing de PDF e XLS/CSV com validação automática antes de gravar no data lake.</li>
+              <li><strong>Observabilidade padronizada:</strong> SDKs internos compartilhados e handlers de logs e métricas enviados ao Grafana.</li>
             </ul>
           </div>
-
-          <div class="project-section">
-            <span class="project-section-title">O que foi Construído (Arquitetura de Microsserviços)</span>
-            <ul class="project-section-list">
-              <li><strong>Camada de IA &amp; Agentes:</strong> Microsserviços de IA (API &amp; Core Service) integrados ao AWS Bedrock e agentes autônomos para tomada de decisão e enriquecimento de dados.</li>
-              <li><strong>Camada de Dados &amp; Ingestão:</strong> Motores de raspagem/carga distribuída, filas SQS, ETLs Serverless no AWS Glue e consultas via Athena.</li>
-              <li><strong>Orquestração &amp; Observabilidade:</strong> Malha produtiva no Airflow e Kubernetes/Argo, handlers de logs/métricas no Grafana e SDKs internos compartilhados.</li>
+          <div class="project-section project-section--result">
+            <span class="project-section-title">Resultado</span>
+            <ul class="project-metrics">
+              <li><strong>90k+</strong><span>jobs por dia</span></li>
+              <li><strong>100%</strong><span>da infra AWS em Terraform</span></li>
             </ul>
+            <p class="project-result">Ingestão contínua em produção, sem intervenção humana no dia a dia.</p>
           </div>
         </div>
 
         <div class="project-tags">
-          <span class="tag"><i class="devicon-python-plain colored"></i> Python</span>
-          <span class="tag"><i class="devicon-apacheairflow-plain colored"></i> Apache Airflow (+90k jobs/dia)</span>
-          <span class="tag"><i class="devicon-kubernetes-plain colored"></i> Kubernetes / Argo</span>
-          <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS (Batch, Fargate, EC2, S3, ECR, SQS, Glue, Athena)</span>
-          <span class="tag"><i class="devicon-openai-plain colored"></i> IA (AWS Bedrock, Agno Agents &amp; Embeddings)</span>
-          <span class="tag"><i class="devicon-terraform-plain colored"></i> Terraform (IaC)</span>
-          <span class="tag"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
-          <span class="tag"><i class="devicon-grafana-plain colored"></i> Grafana / Observabilidade</span>
-          <span class="tag"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="tag"><i class="devicon-python-plain colored" aria-hidden="true"></i> Python</span>
+          <span class="tag"><i class="devicon-apacheairflow-plain colored" aria-hidden="true"></i> Apache Airflow</span>
+          <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored" aria-hidden="true"></i> AWS</span>
+          <span class="tag"><i class="devicon-terraform-plain colored" aria-hidden="true"></i> Terraform</span>
+          <span class="tag"><i class="devicon-kubernetes-plain colored" aria-hidden="true"></i> Kubernetes / Argo</span>
+          <span class="tag"><i class="devicon-fastapi-plain colored" aria-hidden="true"></i> FastAPI</span>
+          <span class="tag"><i class="devicon-grafana-plain colored" aria-hidden="true"></i> Grafana</span>
+          <span class="tag"><i class="devicon-docker-plain colored" aria-hidden="true"></i> Docker</span>
         </div>
-      </div>
+      </article>
 
-      <!-- AutoTED (Oculto temporariamente) -->
-      <!-- Para voltar a exibir no futuro, remova o style="display: none;" e a classe is-hidden -->
-      <div class="project-card project-card--solo reveal is-hidden" id="project-autoted" style="display: none;">
+      <!-- AutoTED (DIIP / UFG) -->
+      <article class="project-card reveal" id="project-autoted">
         <div class="project-card-header">
           <div class="project-header-meta">
             <span class="project-status project-status--production">Em produção</span>
             <span class="project-role">Tech Lead · Eng. de Dados &amp; DevOps</span>
           </div>
           <div class="project-links-top">
-            <span class="project-company" title="Universidade Federal de Goiás / PROAD">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              UFG / PROAD
+            <span class="project-company" title="Diretoria de Inovação e Integração de Processos, PROAD/UFG">
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              DIIP · PROAD/UFG
             </span>
-            <span class="project-icon-link" aria-label="Repositório privado" title="Repositório privado">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span class="project-icon-link" role="img" aria-label="Sistema interno da UFG" title="Sistema interno da UFG">
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             </span>
           </div>
         </div>
-        <h3 class="project-title">AutoTED — Plataforma de Automação, Ingestão e Conciliação</h3>
-        <p class="project-desc">
-          Plataforma de extração, conciliação contábil/financeira e observabilidade de convênios públicos (TEDs), <strong>projetada e desenvolvida do zero por mim</strong> para cruzar e auditar dados heterogêneos entre SIPAC e Tesouro Gerencial.
-        </p>
+
+        <h3 class="project-title">AutoTED — Ingestão, Conciliação e Auditoria Orçamentária</h3>
+
+        <div class="project-brief">
+          <div class="project-brief-item">
+            <span class="project-section-title">Problema</span>
+            <p>A UFG recebe recursos de ministérios por Termos de Execução Descentralizada (TEDs) e precisa conciliar repasses e execuções espalhados entre Tesouro Gerencial, SIPAC e SEI, acompanhar vigências e prestar contas a TCU e CGU, um processo que dependia de planilhas.</p>
+          </div>
+          <div class="project-brief-item">
+            <span class="project-section-title">Solução</span>
+            <p>Uma plataforma que <strong>projetei e desenvolvi do zero</strong>: pipelines no Prefect ingerem as fontes sem intervenção humana, um motor de regras concilia os lançamentos e um painel com controle de acesso expõe saldos, alertas e exportações.</p>
+          </div>
+        </div>
+
+        <figure class="pipeline">
+          <figcaption class="pipeline-caption">Arquitetura</figcaption>
+          <ol class="pipeline-flow">
+            <li class="pipeline-stage">
+              <span class="stage-name">Fontes</span>
+              <span class="stage-tech">Tesouro Gerencial (Gmail API) · SIPAC · SEI</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Ingestão</span>
+              <span class="stage-tech">Prefect 2.x · 5 pipelines agendados</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Armazenamento</span>
+              <span class="stage-tech">PostgreSQL 15 · SQLAlchemy · Alembic</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Conciliação</span>
+              <span class="stage-tech">NC/PF × NE/OB · saldos por GND e RAP · quarentena</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Consumo</span>
+              <span class="stage-tech">FastAPI + HTMX · exportações CSV/Excel</span>
+            </li>
+          </ol>
+          <ul class="pipeline-rails">
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Auditoria</span><span>Hash chain SHA-256 · RBAC por unidade gestora</span></li>
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Infra &amp; CI/CD</span><span>Docker · Nginx + TLS · GitHub Actions self-hosted · Trivy · Bandit</span></li>
+          </ul>
+        </figure>
 
         <div class="project-details">
           <div class="project-section">
-            <span class="project-section-title">Minhas Responsabilidades &amp; Atuação</span>
+            <span class="project-section-title">Decisões de engenharia</span>
             <ul class="project-section-list">
-              <li><strong>Arquitetura &amp; Leadership Técnico:</strong> Concepção integral do ecossistema de dados, esteira de processamento e reconciliação automatizada de execuções orçamentárias (NC, NE, OB).</li>
-              <li><strong>DevOps &amp; Infraestrutura:</strong> Servidores dedicados (LAMCAD/UFG), automação de CI/CD via GitHub Actions Self-Hosted Runner com scan de segurança (Trivy), gateway Nginx, SSL e redes Docker isoladas.</li>
-              <li><strong>Engenharia de Dados &amp; BI:</strong> Pipelines de ingestão automatizados, orquestração de fluxos no Prefect 2.x, modelagem analítica no PostgreSQL e camada de BI com dashboards no Metabase.</li>
+              <li><strong>Auditoria imutável:</strong> cada registro da trilha carrega o hash SHA-256 do anterior, então uma alteração retroativa quebra a cadeia e fica visível.</li>
+              <li><strong>Quarentena em vez de descarte:</strong> registros divergentes entre SIPAC e Tesouro Gerencial são isolados antes de entrar na conciliação.</li>
+              <li><strong>Monitorar a ausência de dado:</strong> um pipeline dedicado detecta quando uma ingestão não chegou e alerta por e-mail institucional.</li>
+              <li><strong>Segurança na esteira:</strong> CI/CD no GitHub Actions com runner self-hosted, varredura Trivy e Bandit, e serviços em redes Docker isoladas atrás do Nginx com TLS.</li>
             </ul>
           </div>
+          <div class="project-section project-section--result">
+            <span class="project-section-title">Resultado</span>
+            <ul class="project-metrics">
+              <li><strong>680+</strong><span>testes automatizados</span></li>
+              <li><strong>150+</strong><span>endpoints REST</span></li>
+              <li><strong>5</strong><span>pipelines no Prefect</span></li>
+            </ul>
+            <p class="project-result">Em produção na UFG, com exportações prontas para prestação de contas a TCU e CGU.</p>
+          </div>
+        </div>
 
-          <div class="project-section">
-            <span class="project-section-title">O que foi Construído</span>
-            <ul class="project-section-list">
-              <li><strong>Motor de Conciliação e Auditoria:</strong> Regras de negócio e rotinas analíticas em SQL para reconciliação automática de movimentações orçamentárias e financeiras entre sistemas governamentais.</li>
-              <li><strong>Orquestração &amp; Observabilidade:</strong> Workflows automatizados no Prefect Server 2.x com suporte a retries, tratamento de falhas e logs centralizados.</li>
-              <li><strong>Segurança &amp; Resiliência:</strong> Contêineres isolados (rede `internal_net`), socket Docker read-only, backups diários automáticos rotativos e rate limiting no gateway.</li>
-            </ul>
+        <div class="project-tags">
+          <span class="tag"><i class="devicon-python-plain colored" aria-hidden="true"></i> Python 3.11</span>
+          <span class="tag">Prefect 2.x</span>
+          <span class="tag"><i class="devicon-postgresql-plain colored" aria-hidden="true"></i> PostgreSQL 15</span>
+          <span class="tag"><i class="devicon-sqlalchemy-plain colored" aria-hidden="true"></i> SQLAlchemy 2.0</span>
+          <span class="tag"><i class="devicon-fastapi-plain colored" aria-hidden="true"></i> FastAPI</span>
+          <span class="tag"><i class="devicon-htmx-plain colored" aria-hidden="true"></i> HTMX</span>
+          <span class="tag"><i class="devicon-docker-plain colored" aria-hidden="true"></i> Docker Compose</span>
+          <span class="tag"><i class="devicon-nginx-original colored" aria-hidden="true"></i> Nginx</span>
+          <span class="tag"><i class="devicon-githubactions-plain colored" aria-hidden="true"></i> GitHub Actions</span>
+        </div>
+      </article>
+
+      <!-- Lakehouse Medallion (Enel) -->
+      <article class="project-card reveal" id="project-lakehouse">
+        <div class="project-card-header">
+          <div class="project-header-meta">
+            <span class="project-status project-status--poc">Prova de conceito</span>
+            <span class="project-role">DevOps &amp; Engenheiro de Dados Pleno</span>
+          </div>
+          <div class="project-links-top">
+            <span class="project-company">
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+              <a href="https://www.enel.com.br/" target="_blank" rel="noopener">Enel ↗</a>
+            </span>
+            <span class="project-icon-link" role="img" aria-label="Projeto corporativo confidencial" title="Projeto corporativo confidencial">
+              <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </span>
           </div>
         </div>
-        <div class="project-tags">
-          <span class="tag"><i class="devicon-python-plain colored"></i> Python 3.11</span>
-          <span class="tag"><i class="devicon-python-plain colored"></i> Prefect 2.x</span>
-          <span class="tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL 15</span>
-          <span class="tag"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
-          <span class="tag"><i class="devicon-java-plain colored"></i> Metabase BI</span>
-          <span class="tag"><i class="devicon-docker-plain colored"></i> Docker Compose</span>
-          <span class="tag"><i class="devicon-nginx-original colored"></i> Nginx</span>
-          <span class="tag"><i class="devicon-githubactions-plain colored"></i> GitHub Actions (CI/CD)</span>
+
+        <h3 class="project-title">Lakehouse Medallion na AWS para Agentes de IA</h3>
+
+        <div class="project-brief">
+          <div class="project-brief-item">
+            <span class="project-section-title">Problema</span>
+            <p>Agentes de IA precisam de dados dos sistemas operacionais, mas consultá-los diretamente sobrecarrega a operação e acopla a IA à estrutura de cada sistema.</p>
+          </div>
+          <div class="project-brief-item">
+            <span class="project-section-title">Solução</span>
+            <p>Uma fronteira de desacoplamento: ingestão batch (D-1) e por CDC (DMS/Debezium + Amazon MSK) para um Lakehouse em S3 com Apache Iceberg, e uma camada de serving com contratos de leitura para os agentes. A POC implementa o pipeline Medallion com dados abertos da ANEEL.</p>
+          </div>
         </div>
-      </div>
+
+        <figure class="pipeline">
+          <figcaption class="pipeline-caption">Arquitetura da POC</figcaption>
+          <ol class="pipeline-flow">
+            <li class="pipeline-stage">
+              <span class="stage-name">Fonte</span>
+              <span class="stage-tech">Dados abertos da ANEEL</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Raw</span>
+              <span class="stage-tech">S3 · arquivos de origem</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Silver</span>
+              <span class="stage-tech">Glue/Spark · 5 tabelas Iceberg</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Gold</span>
+              <span class="stage-tech">6 tabelas de KPIs · Iceberg</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Consumo</span>
+              <span class="stage-tech">Athena · serving para agentes (MCP)</span>
+            </li>
+          </ol>
+          <ul class="pipeline-rails">
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>AWS Step Functions</span></li>
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Infra &amp; segurança</span><span>Terraform · KMS · IAM de menor privilégio · SSM Parameter Store</span></li>
+          </ul>
+        </figure>
+
+        <div class="project-details">
+          <div class="project-section">
+            <span class="project-section-title">Decisões de engenharia</span>
+            <ul class="project-section-list">
+              <li><strong>Custo sob controle:</strong> consultas no Athena passam por um workgroup com limite de custo por query.</li>
+              <li><strong>Segurança por padrão:</strong> chave KMS com rotação, IAM de menor privilégio e HTTPS obrigatório nos buckets.</li>
+              <li><strong>Contrato de infraestrutura:</strong> publicado pelo próprio Terraform no SSM Parameter Store.</li>
+              <li><strong>Releases imutáveis:</strong> biblioteca compartilhada empacotada e versionada, promovida entre dev, QA e produção sem rebuild.</li>
+            </ul>
+          </div>
+          <div class="project-section project-section--result">
+            <span class="project-section-title">Resultado</span>
+            <ul class="project-metrics">
+              <li><strong>5</strong><span>tabelas Silver</span></li>
+              <li><strong>6</strong><span>tabelas Gold de KPIs</span></li>
+              <li><strong>3</strong><span>ambientes: dev, QA e prod</span></li>
+            </ul>
+            <p class="project-result">Pipeline Raw → Silver → Gold implementado e protótipo de serving com ferramentas de consulta por município e período, preparado para MCP.</p>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag"><i class="devicon-apachespark-original colored" aria-hidden="true"></i> Apache Spark</span>
+          <span class="tag"><i class="devicon-python-plain colored" aria-hidden="true"></i> PySpark</span>
+          <span class="tag">Apache Iceberg</span>
+          <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored" aria-hidden="true"></i> Glue · Athena · Step Functions</span>
+          <span class="tag"><i class="devicon-terraform-plain colored" aria-hidden="true"></i> Terraform</span>
+          <span class="tag">KMS &amp; IAM</span>
+          <span class="tag">MCP</span>
+        </div>
+      </article>
 
       <!-- ─── Pessoais & Open Source ───────────────────── -->
-      <div class="projects-category reveal d1">
+      <div class="projects-category reveal">
         <span class="projects-category-label">Pessoais &amp; Open Source</span>
         <span class="projects-category-line"></span>
       </div>
 
       <!-- Meu Apê -->
-      <div class="project-card project-card--solo reveal d2" id="project-meu-ape">
+      <article class="project-card reveal" id="project-meu-ape">
         <div class="project-card-header">
           <div class="project-header-meta">
-            <span class="project-status project-status--production">Open Source</span>
+            <span class="project-status">Open Source</span>
             <span class="project-role">Engenharia de Dados &amp; Machine Learning</span>
           </div>
           <div class="project-links-top">
-            <span class="project-company" title="Desenvolvido em parceria com @gauloish">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span class="project-company">
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
               Coautoria com <a href="https://github.com/gauloish" target="_blank" rel="noopener">@gauloish</a>
             </span>
-            <a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener" class="project-icon-link" aria-label="Ver repositório no GitHub" title="Ver repositório no GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            <a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener" class="project-icon-link" aria-label="Ver repositório do Meu Apê no GitHub" title="Ver repositório no GitHub">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
             </a>
           </div>
         </div>
+
         <h3 class="project-title">Meu Apê — Pipeline de Dados, Deduplicação &amp; ML Imobiliário</h3>
-        <p class="project-desc">
-          Pipeline end-to-end de Engenharia de Dados e Machine Learning desenvolvido em parceria com <a href="https://github.com/gauloish" target="_blank" rel="noopener" style="color: var(--blue-light); text-decoration: underline; text-underline-offset: 2px;">@gauloish</a> para extração massiva, identificação e deduplicação de ativos físicos imobiliários reais e precificação preditiva com modelos de regressão em Goiânia - GO.
-        </p>
+
+        <div class="project-brief">
+          <div class="project-brief-item">
+            <span class="project-section-title">Problema</span>
+            <p>O mesmo imóvel de Goiânia aparece anunciado por várias imobiliárias, o que gera ruído e duplicidade em qualquer análise de preço feita sobre os anúncios.</p>
+          </div>
+          <div class="project-brief-item">
+            <span class="project-section-title">Solução</span>
+            <p>Um pipeline de ponta a ponta: extração concorrente dos portais, deduplicação pelo imóvel físico (e não pelo anúncio) e modelos de regressão para estimar o valor de mercado.</p>
+          </div>
+        </div>
+
+        <figure class="pipeline">
+          <figcaption class="pipeline-caption">Pipeline</figcaption>
+          <ol class="pipeline-flow">
+            <li class="pipeline-stage">
+              <span class="stage-name">Fontes</span>
+              <span class="stage-tech">Portais imobiliários</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Extração</span>
+              <span class="stage-tech">curl_cffi · asyncio · checkpoint em CSV</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Deduplicação</span>
+              <span class="stage-tech">Consolidação do imóvel físico</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Features</span>
+              <span class="stage-tech">Enriquecimento geoespacial · outliers</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Modelos</span>
+              <span class="stage-tech">XGBoost · LightGBM</span>
+            </li>
+          </ol>
+          <ul class="pipeline-rails">
+            <li class="pipeline-rail"><span class="pipeline-rail-label">CLI</span><span><code>meu-ape scrape</code> · <code>scrape-async</code> · <code>deduplicate</code> · <code>validate</code></span></li>
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Ambiente</span><span>uv · Python 3.12 · Jupyter</span></li>
+          </ul>
+        </figure>
 
         <div class="project-details">
           <div class="project-section">
-            <span class="project-section-title">Minhas Responsabilidades &amp; Destaques Técnicos</span>
+            <span class="project-section-title">Decisões de engenharia</span>
             <ul class="project-section-list">
-              <li><strong>Scraping Concorrente &amp; Resiliente:</strong> Concepção de motor de raspagem particionado (síncrono e assíncrono com <code>curl_cffi</code>) com bypass de proteções anti-bot, checkpoint em buffer CSV e validação de cobertura do portal.</li>
-              <li><strong>Engine de Deduplicação Física:</strong> Algoritmo para identificar e consolidar o mesmo imóvel físico anunciado por múltiplas imobiliárias diferentes, eliminando ruídos e duplicidades de mercado.</li>
-              <li><strong>Feature Engineering &amp; Modelagem Preditiva:</strong> Enriquecimento geoespacial, tratamento de outliers e treinamento de modelos de gradiente boosting (XGBoost, LightGBM) para predição de valor venal de mercado.</li>
+              <li><strong>Raspagem particionada:</strong> modos síncrono e assíncrono com <code>curl_cffi</code>, para lidar com proteções anti-bot, e checkpoint em buffer CSV para retomar sem recomeçar.</li>
+              <li><strong>Cobertura verificada:</strong> o subcomando <code>validate</code> confere a cobertura do portal na extração.</li>
+              <li><strong>Deduplicação por imóvel físico:</strong> o mesmo imóvel anunciado por imobiliárias diferentes vira um único registro.</li>
+              <li><strong>Reprodutibilidade:</strong> ambiente gerenciado com <code>uv</code> e Python 3.12, com notebooks da EDA ao tuning de hiperparâmetros.</li>
             </ul>
           </div>
-
-          <div class="project-section">
-            <span class="project-section-title">O que foi Construído</span>
-            <ul class="project-section-list">
-              <li><strong>CLI Unificada (<code>meu-ape</code>):</strong> Subcomandos modulares para automação de extração (<code>scrape</code> / <code>scrape-async</code>), deduplicação (<code>deduplicate</code>) e validação (<code>validate</code>).</li>
-              <li><strong>Pipeline de Machine Learning (EDA a Produção):</strong> Notebooks estruturados para sanitização, enriquecimento espacial, análise exploratória (EDA) e tuning de hiperparâmetros.</li>
-              <li><strong>Ambiente de Alta Performance:</strong> Gerenciamento com <code>uv</code> e Python 3.12, garantindo reprodutibilidade e execução ultrarrápida.</li>
-            </ul>
+          <div class="project-section project-section--result">
+            <span class="project-section-title">Resultado</span>
+            <p class="project-result">Código aberto, com CLI unificada e modelos de gradient boosting para predição do valor de mercado.</p>
+            <a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener" class="btn-secondary btn-small">
+              Ver repositório
+              <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
           </div>
         </div>
 
         <div class="project-tags">
-          <span class="tag"><i class="devicon-python-plain colored"></i> Python 3.12</span>
-          <span class="tag"><i class="devicon-python-plain colored"></i> uv</span>
-          <span class="tag"><i class="devicon-pandas-plain colored"></i> Pandas / Polars</span>
-          <span class="tag"><i class="devicon-scikitlearn-plain colored"></i> Scikit-Learn</span>
-          <span class="tag"><i class="devicon-python-plain colored"></i> XGBoost / LightGBM</span>
-          <span class="tag"><i class="devicon-python-plain colored"></i> curl_cffi / Asyncio</span>
-          <span class="tag"><i class="devicon-jupyter-plain colored"></i> Jupyter Notebooks</span>
-          <span class="tag"><i class="devicon-github-original colored"></i> GitHub Open Source</span>
+          <span class="tag"><i class="devicon-python-plain colored" aria-hidden="true"></i> Python 3.12</span>
+          <span class="tag"><i class="devicon-pandas-plain colored" aria-hidden="true"></i> Pandas / Polars</span>
+          <span class="tag"><i class="devicon-scikitlearn-plain colored" aria-hidden="true"></i> Scikit-Learn</span>
+          <span class="tag">XGBoost / LightGBM</span>
+          <span class="tag">curl_cffi · asyncio</span>
+          <span class="tag"><i class="devicon-jupyter-plain colored" aria-hidden="true"></i> Jupyter</span>
+          <span class="tag">uv</span>
         </div>
-      </div>
+      </article>
 
     </div>
   </div>

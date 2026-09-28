@@ -1,5 +1,7 @@
 document.documentElement.classList.add('js');
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 /**
  * ─── Component Loader ─────────────────────────────────────
  * Carrega seções HTML externas em placeholders [data-section]
@@ -25,6 +27,18 @@ async function loadSections() {
   initTypedText();
   initTilt();
   initDataParticles();
+  scrollToHash();
+}
+
+/**
+ * ─── Deep link ────────────────────────────────────────────
+ * As seções chegam depois do load, então o navegador não acha
+ * o #id da URL sozinho; rola até ele manualmente.
+ */
+function scrollToHash() {
+  if (!location.hash) return;
+  const target = document.getElementById(location.hash.slice(1));
+  if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
 }
 
 /**
@@ -64,7 +78,7 @@ function initNav() {
           link.removeAttribute('aria-current');
           if (link.getAttribute('href') === `#${entry.target.id}`) {
             link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
+            link.setAttribute('aria-current', 'true');
           }
         });
       }
@@ -74,85 +88,71 @@ function initNav() {
   sections.forEach(s => sectionObserver.observe(s));
 }
 
-
-
 /**
  * ─── Card Expansion (Mobile Accordion) ───────────────────
  * Adiciona botões de expansão/recolhimento para cards extensos no mobile
  */
+function createToggle(label, controlsId, extraClass = '') {
+  const toggleBtn = document.createElement('button');
+  toggleBtn.type = 'button';
+  toggleBtn.className = `card-toggle-btn ${extraClass}`.trim();
+  toggleBtn.setAttribute('aria-expanded', 'false');
+  if (controlsId) toggleBtn.setAttribute('aria-controls', controlsId);
+  toggleBtn.innerHTML = `
+    <span>${label}</span>
+    <svg class="toggle-icon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+  `;
+  return toggleBtn;
+}
+
 function initCardExpansion() {
-  // 1. Projetos com .project-details
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach(card => {
+  // 1. Projetos: decisões e resultado ficam recolhidos no mobile
+  document.querySelectorAll('.project-card').forEach(card => {
     const details = card.querySelector('.project-details');
     if (!details) return;
 
-    const toggleBtn = document.createElement('button');
-    toggleBtn.type = 'button';
-    toggleBtn.className = 'card-toggle-btn';
-    toggleBtn.setAttribute('aria-expanded', 'false');
-    toggleBtn.innerHTML = `
-      <span>Ver detalhes e responsabilidades</span>
-      <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-    `;
-
+    details.id = details.id || `${card.id}-details`;
+    const closedLabel = 'Ver decisões de engenharia e resultado';
+    const toggleBtn = createToggle(closedLabel, details.id);
     card.insertBefore(toggleBtn, details);
 
     toggleBtn.addEventListener('click', () => {
       const isExpanded = card.classList.toggle('details-expanded');
       toggleBtn.setAttribute('aria-expanded', String(isExpanded));
-      toggleBtn.querySelector('span').textContent = isExpanded 
-        ? 'Ocultar detalhes' 
-        : 'Ver detalhes e responsabilidades';
+      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar detalhes' : closedLabel;
     });
   });
 
   // 2. Experiências com muitos bullets
-  const expCards = document.querySelectorAll('.exp-item');
-  expCards.forEach(card => {
+  document.querySelectorAll('.exp-item').forEach(card => {
     const bullets = card.querySelectorAll('.exp-bullets li');
-    if (bullets.length > 3) {
-      const bulletsList = card.querySelector('.exp-bullets');
-      bullets.forEach((li, idx) => {
-        if (idx >= 2) li.classList.add('bullet-extra');
-      });
+    if (bullets.length <= 3) return;
 
-      const toggleBtn = document.createElement('button');
-      toggleBtn.type = 'button';
-      toggleBtn.className = 'card-toggle-btn exp-toggle-btn';
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn.innerHTML = `
-        <span>Ver mais realizações (+${bullets.length - 2})</span>
-        <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      `;
+    const bulletsList = card.querySelector('.exp-bullets');
+    bullets.forEach((li, idx) => {
+      if (idx >= 2) li.classList.add('bullet-extra');
+    });
 
-      bulletsList.after(toggleBtn);
+    const closedLabel = `Ver mais realizações (+${bullets.length - 2})`;
+    const toggleBtn = createToggle(closedLabel, null, 'exp-toggle-btn');
+    bulletsList.after(toggleBtn);
 
-      toggleBtn.addEventListener('click', () => {
-        const isExpanded = card.classList.toggle('details-expanded');
-        toggleBtn.setAttribute('aria-expanded', String(isExpanded));
-        toggleBtn.querySelector('span').textContent = isExpanded 
-          ? 'Ocultar realizações adicionais' 
-          : `Ver mais realizações (+${bullets.length - 2})`;
-      });
-    }
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = card.classList.toggle('details-expanded');
+      toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar realizações adicionais' : closedLabel;
+    });
   });
 
-  // 3. Resumo Profissional (.about-text)
+  // 3. Resumo (.about-text)
   const aboutText = document.querySelector('.about-text');
   if (aboutText) {
     const extraParagraphs = aboutText.querySelectorAll('p:nth-of-type(n+2), .about-pillars');
     if (extraParagraphs.length > 0) {
       extraParagraphs.forEach(el => el.classList.add('about-extra'));
 
-      const toggleBtn = document.createElement('button');
-      toggleBtn.type = 'button';
-      toggleBtn.className = 'card-toggle-btn about-toggle-btn';
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn.innerHTML = `
-        <span>Ver resumo profissional completo</span>
-        <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      `;
+      const closedLabel = 'Ver resumo completo';
+      const toggleBtn = createToggle(closedLabel, null, 'about-toggle-btn');
 
       const firstP = aboutText.querySelector('p');
       if (firstP) {
@@ -164,9 +164,7 @@ function initCardExpansion() {
       toggleBtn.addEventListener('click', () => {
         const isExpanded = aboutText.classList.toggle('details-expanded');
         toggleBtn.setAttribute('aria-expanded', String(isExpanded));
-        toggleBtn.querySelector('span').textContent = isExpanded 
-          ? 'Ocultar resumo adicional' 
-          : 'Ver resumo profissional completo';
+        toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar resumo' : closedLabel;
       });
     }
   }
@@ -184,9 +182,10 @@ function initCopyToClipboard() {
   if (!toast) {
     toast = document.createElement('div');
     toast.className = 'copy-toast';
+    toast.setAttribute('role', 'status');
     toast.setAttribute('aria-live', 'polite');
     toast.innerHTML = `
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       <span class="copy-toast-msg">Copiado para a área de transferência!</span>
     `;
     document.body.appendChild(toast);
@@ -198,7 +197,7 @@ function initCopyToClipboard() {
     item.addEventListener('click', () => {
       let textToCopy = '';
       const href = item.getAttribute('href') || '';
-      
+
       if (href.startsWith('mailto:')) {
         textToCopy = href.replace('mailto:', '').trim();
       } else if (href.startsWith('tel:')) {
@@ -225,32 +224,37 @@ function initCopyToClipboard() {
 
 /**
  * ─── Typed.js: Hero dynamic role ──────────────────────────
+ * O cargo já vem escrito no HTML e fica na tela no carregamento;
+ * depois o Typed apaga e alterna as frentes, voltando ao cargo
+ * (com pausa maior) a cada volta. Leitores de tela leem o texto
+ * fixo em .sr-only, não este.
  */
 function initTypedText() {
   const el = document.getElementById('hero-typed-text');
-  if (!el || typeof Typed === 'undefined') return;
+  if (!el || typeof Typed === 'undefined' || prefersReducedMotion.matches) return;
 
   new Typed('#hero-typed-text', {
     strings: [
-      'Data Platform Engineer Pleno',
       'Orquestração &amp; Pipelines em Alta Escala (+90k jobs)',
       'Infraestrutura Cloud &amp; IaC (AWS + Terraform)',
-      'IA Aplicada, LLMs &amp; Agentes Autônomos'
+      'Lakehouse na AWS com Apache Iceberg',
+      'IA Aplicada, LLMs &amp; Agentes Autônomos',
+      'Data Platform Engineer Pleno^1800'
     ],
     typeSpeed: 45,
     backSpeed: 25,
     backDelay: 2200,
-    startDelay: 400,
+    startDelay: 2600,
     loop: true,
     showCursor: false
   });
 }
 
 /**
- * ─── 3D Tilt: Terminal & Project cards ────────────────────
+ * ─── 3D Tilt: Terminal ────────────────────────────────────
  */
 function initTilt() {
-  if (typeof VanillaTilt === 'undefined') return;
+  if (typeof VanillaTilt === 'undefined' || prefersReducedMotion.matches) return;
 
   // Efeito 3D Tilt com brilho (glare) exclusivo para o Terminal do Hero
   const terminal = document.querySelector('.hero-terminal');
@@ -259,7 +263,7 @@ function initTilt() {
       max: 6,
       speed: 400,
       glare: true,
-      "max-glare": 0.18,
+      'max-glare': 0.18,
       scale: 1.02
     });
   }
@@ -267,7 +271,9 @@ function initTilt() {
 
 /**
  * ─── Canvas Data Graph Particles ─────────────────────────
- * Fundo de partículas com nós de dados e conexões em tempo real
+ * Fundo de partículas com nós de dados e conexões.
+ * Só anima enquanto o hero está visível e a aba está ativa;
+ * com prefers-reduced-motion, desenha um quadro estático.
  */
 function initDataParticles() {
   const canvas = document.getElementById('data-particles-canvas');
@@ -275,30 +281,18 @@ function initDataParticles() {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  let width = (canvas.width = canvas.parentElement.offsetWidth || window.innerWidth);
-  let height = (canvas.height = canvas.parentElement.offsetHeight || 600);
-
+  const heroSection = document.getElementById('hero');
   const particles = [];
-  const particleCount = Math.min(Math.floor(width / 24), 40);
   const mouse = { x: null, y: null, radius: 140 };
+  const maxDist = 120;
+  let width = 0;
+  let height = 0;
+  let rafId = null;
+  let heroVisible = true;
 
-  window.addEventListener('resize', () => {
+  function resize() {
     width = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
     height = canvas.height = canvas.parentElement.offsetHeight || 600;
-  });
-
-  const heroSection = document.getElementById('hero');
-  if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-
-    heroSection.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
-    });
   }
 
   class Particle {
@@ -321,7 +315,7 @@ function initDataParticles() {
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
+        if (dist > 0 && dist < mouse.radius) {
           const force = (mouse.radius - dist) / mouse.radius;
           this.x -= (dx / dist) * force * 1.2;
           this.y -= (dy / dist) * force * 1.2;
@@ -337,22 +331,17 @@ function initDataParticles() {
     }
   }
 
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
-
-  function animate() {
+  function drawFrame(move) {
     ctx.clearRect(0, 0, width, height);
 
     for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
+      if (move) particles[i].update();
       particles[i].draw();
 
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 120;
 
         if (dist < maxDist) {
           const alpha = (1 - dist / maxDist) * 0.22;
@@ -365,11 +354,66 @@ function initDataParticles() {
         }
       }
     }
-
-    requestAnimationFrame(animate);
   }
 
-  animate();
+  function loop() {
+    drawFrame(true);
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function start() {
+    if (rafId !== null || prefersReducedMotion.matches) return;
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function stop() {
+    if (rafId === null) return;
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  resize();
+  const particleCount = Math.min(Math.floor(width / 24), 40);
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    if (rafId === null) drawFrame(false);
+  });
+
+  if (heroSection) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      if (heroVisible && !document.hidden) start();
+      else stop();
+    }).observe(heroSection);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else if (heroVisible) start();
+  });
+
+  prefersReducedMotion.addEventListener?.('change', () => {
+    if (prefersReducedMotion.matches) stop();
+    else if (heroVisible && !document.hidden) start();
+  });
+
+  drawFrame(false);
+  start();
 }
 
 // ─── Boot ──────────────────────────────────────────────────

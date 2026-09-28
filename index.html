@@ -5,38 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Luis Cesar | Data Platform Engineer</title>
-  <meta name="description" content="Portfólio de Luis Cesar Ferreira do Carmo — Data Platform Engineer Pleno especializado em arquitetura de dados em nuvem, orquestração de alta escala (AWS + Terraform) e IA aplicada. Goiânia, GO." />
+  <meta name="description" content="Luis Cesar Ferreira do Carmo, Data Platform Engineer em Goiânia. Pipelines de ingestão, orquestração no Apache Airflow (90k+ jobs/dia), Lakehouse na AWS com Apache Iceberg e infraestrutura em Terraform." />
   <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Luis Cesar | Data Platform Engineer" />
-  <meta property="og:description" content="Plataformas de dados distribuídos, orquestração cloud AWS, pipelines em alta escala e IA aplicada." />
-  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Pipelines de dados, Lakehouse na AWS com Apache Iceberg, orquestração em alta escala e infraestrutura como código." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Luis Cesar Ferreira do Carmo",
+    "jobTitle": "Data Platform Engineer",
+    "email": "mailto:luiscesar@discente.ufg.br",
+    "address": { "@type": "PostalAddress", "addressLocality": "Goiânia", "addressRegion": "GO", "addressCountry": "BR" },
+    "knowsAbout": ["Engenharia de Dados", "Apache Airflow", "Apache Spark", "Apache Iceberg", "AWS", "Terraform", "Python", "SQL"],
+    "sameAs": [
+      "https://github.com/LuisFcarmo",
+      "https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/",
+      "https://medium.com/@luiscesar_53261"
+    ]
+  }
+  </script>
+
+  <!-- Fontes: preconnect evita a cadeia style.css → @import → fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
 
   <!-- Devicon CDN para ícones de tecnologias -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- CSS modular: a ordem importa (base → componentes → layout → seções) -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/sections/hero.css" />
+  <link rel="stylesheet" href="css/sections/about.css" />
+  <link rel="stylesheet" href="css/sections/experience.css" />
+  <link rel="stylesheet" href="css/sections/projects.css" />
+  <link rel="stylesheet" href="css/sections/stack.css" />
+  <link rel="stylesheet" href="css/sections/articles.css" />
+  <link rel="stylesheet" href="css/sections/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
 
   <!-- ─── NAVIGATION ────────────────────────────────── -->
-  <nav id="navbar" role="navigation" aria-label="Navegação principal">
+  <nav id="navbar" aria-label="Navegação principal">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo"><span class="nav-logo-prefix">&gt;</span>Luis<span>.</span></a>
+      <a href="#hero" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-prefix" aria-hidden="true">&gt;</span>Luis<span aria-hidden="true">.</span></a>
       <ul class="nav-links" id="nav-menu">
         <li><a href="#about">Sobre</a></li>
         <li><a href="#experience">Experiência</a></li>
-        <li><a href="#stack">Stack</a></li>
         <li><a href="#projects">Projetos</a></li>
+        <li><a href="#stack">Stack</a></li>
         <li><a href="#articles">Artigos</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
       <div class="nav-actions">
         <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener" class="nav-cta" id="nav-github-btn">GitHub <span aria-hidden="true">→</span></a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
-          <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
     </div>
@@ -44,32 +82,48 @@
 
   <!-- ─── SECTIONS (carregadas via JS) ──────────────── -->
   <main id="main-content">
+    <noscript>
+      <section class="noscript-fallback">
+        <div class="container">
+          <h1>Luis Cesar Ferreira do Carmo</h1>
+          <p>Data Platform Engineer em Goiânia, GO. Pipelines de ingestão, orquestração no Apache Airflow, Lakehouse na AWS com Apache Iceberg e infraestrutura em Terraform.</p>
+          <p>Este site carrega as seções com JavaScript. Enquanto isso, você me encontra em
+            <a href="https://github.com/LuisFcarmo">GitHub</a>,
+            <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/">LinkedIn</a> ou
+            <a href="mailto:luiscesar@discente.ufg.br">luiscesar@discente.ufg.br</a>.
+          </p>
+        </div>
+      </section>
+    </noscript>
+
     <div data-section="hero.html"></div>
     <hr class="divider" />
     <div data-section="about.html"></div>
     <hr class="divider" />
     <div data-section="experience.html"></div>
     <hr class="divider" />
-    <div data-section="stack.html"></div>
-    <hr class="divider" />
     <div data-section="projects.html"></div>
+    <hr class="divider" />
+    <div data-section="stack.html"></div>
     <hr class="divider" />
     <div data-section="articles.html"></div>
     <div data-section="contact.html"></div>
   </main>
 
   <!-- ─── FOOTER ────────────────────────────────────── -->
-  <footer role="contentinfo">
+  <footer>
     <div class="footer-inner">
       <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
-      <p>
-        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">github.com/LuisFcarmo</a>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
       </p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
