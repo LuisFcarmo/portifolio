@@ -44,11 +44,32 @@
 }
 
 .btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 0.75rem 1.2rem;
   color: #fff;
   background: var(--blue);
   box-shadow: 0 10px 24px rgba(38, 99, 210, 0.2);
 }
+
+/* Reflexo que atravessa o botão no hover */
+.btn-primary::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
+  content: '';
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-out);
+}
+
+.btn-primary:hover::after { transform: translateX(120%); }
+
+.btn-primary svg,
+.btn-secondary svg { transition: transform var(--transition-fast); }
+
+.btn-primary:hover svg { transform: translateX(3px); }
 
 .btn-secondary {
   padding: 0.7rem 1.15rem;
@@ -63,6 +84,12 @@
   background: var(--blue-dim);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
   transform: translateY(-1px);
+}
+
+/* Botão só com ícone (GitHub, LinkedIn no hero) */
+.btn-icon {
+  width: 44px;
+  padding: 0;
 }
 
 .btn-small {
@@ -149,6 +176,11 @@
 }
 
 /* ─── Status dot ─────────────────────────────────────────── */
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); }
+  60% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+}
+
 .status-dot {
   flex: 0 0 auto;
   width: 7px;
@@ -156,7 +188,44 @@
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  animation: dotPulse 2.4s ease-out infinite;
 }
+
+/* ─── Spotlight ──────────────────────────────────────────── */
+/* script.js marca os cards com .spotlight (só com mouse) e atualiza
+ * --mx/--my: um brilho suave segue o cursor no fundo e na borda. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before,
+.spotlight::after {
+  position: absolute;
+  border-radius: inherit;
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.spotlight::before {
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(79, 140, 255, 0.09), transparent 45%);
+}
+
+.spotlight::after {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 180, 255, 0.6), transparent 55%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.spotlight:hover::before,
+.spotlight:hover::after { opacity: 1; }
 
 /* ─── Card expansion (accordion) ─────────────────────────── */
 /* O que cada seção esconde fica no CSS da seção; aqui só o botão.

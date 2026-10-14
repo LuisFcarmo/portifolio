@@ -9,10 +9,32 @@ nav {
   height: 72px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(170, 187, 210, 0.1);
-  background: rgba(8, 10, 15, 0.76);
+  border-bottom: 1px solid rgba(170, 187, 210, 0.06);
+  background: rgba(8, 10, 15, 0.55);
   backdrop-filter: blur(16px) saturate(130%);
   -webkit-backdrop-filter: blur(16px) saturate(130%);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Depois do topo da página (classe posta por script.js) */
+nav.is-scrolled {
+  border-bottom-color: rgba(170, 187, 210, 0.1);
+  background: rgba(8, 10, 15, 0.86);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+/* Progresso de leitura: script.js atualiza --scroll (0 a 1) */
+.scroll-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.6);
+  transform: scaleX(var(--scroll, 0));
+  transform-origin: 0 50%;
+  pointer-events: none;
 }
 
 .nav-inner {
@@ -105,6 +127,11 @@ nav {
 .nav-toggle .close-icon { display: none; }
 .menu-open .nav-toggle .hamburger-icon { display: none; }
 .menu-open .nav-toggle .close-icon { display: block; }
+
+/* "Contato" só aparece no menu quando o botão "Fale comigo" está escondido */
+@media (min-width: 641px) {
+  .nav-links-contact { display: none; }
+}
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 980px) {

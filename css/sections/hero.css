@@ -24,6 +24,22 @@
 }
 
 
+/* Grade de "dados" ao fundo, apagando nas bordas */
+#hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(170, 187, 210, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170, 187, 210, 0.05) 1px, transparent 1px);
+  background-position: center top;
+  background-size: 64px 64px;
+  content: '';
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 55% 35%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 55% 35%, #000 15%, transparent 75%);
+  pointer-events: none;
+}
+
 /* ─── Entrada ────────────────────────────────────────────── */
 @keyframes heroFadeIn {
   from {
@@ -310,6 +326,37 @@ a.hero-meta-item:hover { color: var(--blue-light); }
   font-size: var(--fs-sm);
 }
 
+/* Boot do terminal: as linhas aparecem em sequência */
+@keyframes termLine {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.terminal-body > p,
+.terminal-metric {
+  animation: termLine 380ms var(--ease-out) both;
+}
+
+.terminal-body > p:first-child { animation-delay: 450ms; }
+.terminal-metric:nth-child(1) { animation-delay: 700ms; }
+.terminal-metric:nth-child(2) { animation-delay: 860ms; }
+.terminal-metric:nth-child(3) { animation-delay: 1020ms; }
+.terminal-metric:nth-child(4) { animation-delay: 1180ms; }
+.terminal-metric:nth-child(5) { animation-delay: 1340ms; }
+.terminal-body > .terminal-status-line { animation-delay: 1600ms; }
+.terminal-body > .terminal-prompt-line--idle { animation-delay: 1800ms; }
+
+.terminal-prompt-line--idle { display: flex; align-items: center; }
+
+.t-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background: var(--blue-light);
+  opacity: 0.85;
+  animation: blink 1s step-end infinite;
+}
+
 .t-check { color: var(--green); }
 .t-check--poc { color: var(--amber); }
 
@@ -371,9 +418,15 @@ a.hero-meta-item:hover { color: var(--blue-light); }
 }
 
 @media (max-width: 480px) {
-  .hero-actions { display: grid; width: 100%; }
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
   .hero-actions .btn-primary,
   .hero-actions .btn-secondary { width: 100%; }
+  .hero-actions > :not(.btn-icon) { grid-column: 1 / -1; }
 }
 
 @media (max-width: 375px) {

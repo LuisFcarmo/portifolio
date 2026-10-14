@@ -22,11 +22,16 @@ async function loadSections() {
 
   // após carregar todos os componentes, inicializa comportamentos
   initNav();
+  initScrollState();
   initCardExpansion();
   initCopyToClipboard();
   initTypedText();
   initTilt();
   initDataParticles();
+  initReveal();
+  initCounters();
+  initSpotlight();
+  initPipelineFlow();
   scrollToHash();
 }
 
@@ -89,6 +94,32 @@ function initNav() {
 }
 
 /**
+ * ─── Nav: fundo ao rolar + progresso de leitura ───────────
+ */
+function initScrollState() {
+  const nav = document.querySelector('nav');
+  const bar = document.querySelector('.scroll-progress');
+  if (!nav) return;
+
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    bar?.style.setProperty('--scroll', progress.toFixed(4));
+  };
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
+/**
  * ─── Card Expansion (Mobile Accordion) ───────────────────
  * Adiciona botões de expansão/recolhimento para cards extensos no mobile
  */
@@ -106,20 +137,20 @@ function createToggle(label, controlsId, extraClass = '') {
 }
 
 function initCardExpansion() {
-  // 1. Projetos: decisões e resultado ficam recolhidos em qualquer largura
+  // 1. Projetos: decisões de engenharia ficam recolhidas em qualquer largura
   document.querySelectorAll('.project-card').forEach(card => {
     const details = card.querySelector('.project-details');
     if (!details) return;
 
     details.id = details.id || `${card.id}-details`;
-    const closedLabel = 'Decisões de engenharia e resultado';
+    const closedLabel = 'Decisões de engenharia';
     const toggleBtn = createToggle(closedLabel, details.id, 'project-toggle-btn');
     card.insertBefore(toggleBtn, details);
 
     toggleBtn.addEventListener('click', () => {
       const isExpanded = card.classList.toggle('details-expanded');
       toggleBtn.setAttribute('aria-expanded', String(isExpanded));
-      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar decisões e resultado' : closedLabel;
+      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar decisões' : closedLabel;
     });
   });
 
@@ -176,7 +207,8 @@ function initCardExpansion() {
  */
 function initCopyToClipboard() {
   const contactItems = document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]');
-  if (!contactItems.length) return;
+  const copyButtons = document.querySelectorAll('[data-copy]');
+  if (!contactItems.length && !copyButtons.length) return;
 
   let toast = document.querySelector('.copy-toast');
   if (!toast) {
@@ -193,6 +225,34 @@ function initCopyToClipboard() {
 
   let toastTimer;
 
+  // navigator.clipboard só existe em HTTPS; fora disso, cai no execCommand
+  const writeClipboard = (text) => {
+    if (navigator.clipboard) return navigator.clipboard.writeText(text);
+
+    const field = document.createElement('textarea');
+    field.value = text;
+    field.setAttribute('readonly', '');
+    field.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+    document.body.appendChild(field);
+    field.select();
+    const ok = document.execCommand('copy');
+    field.remove();
+    return ok ? Promise.resolve() : Promise.reject();
+  };
+
+  const copy = (textToCopy) => {
+    return writeClipboard(textToCopy).then(() => {
+      const msg = toast.querySelector('.copy-toast-msg');
+      if (msg) msg.textContent = `"${textToCopy}" copiado!`;
+
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    });
+  };
+
   contactItems.forEach(item => {
     item.addEventListener('click', () => {
       let textToCopy = '';
@@ -205,21 +265,129 @@ function initCopyToClipboard() {
       }
 
       if (!textToCopy) textToCopy = item.textContent.trim();
-
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          const msg = toast.querySelector('.copy-toast-msg');
-          if (msg) msg.textContent = `"${textToCopy}" copiado!`;
-
-          toast.classList.add('show');
-          clearTimeout(toastTimer);
-          toastTimer = setTimeout(() => {
-            toast.classList.remove('show');
-          }, 2000);
-        }).catch(() => {});
-      }
+      copy(textToCopy).catch(() => {});
     });
   });
+
+  // Botão "Copiar e-mail": para quem não usa cliente de e-mail no navegador
+  copyButtons.forEach(btn => {
+    const label = btn.querySelector('span');
+    const original = label?.textContent;
+    let labelTimer;
+
+    btn.addEventListener('click', () => {
+      copy(btn.dataset.copy).then(() => {
+        if (!label) return;
+        label.textContent = 'E-mail copiado';
+        clearTimeout(labelTimer);
+        labelTimer = setTimeout(() => { label.textContent = original; }, 2000);
+      }).catch(() => {});
+    });
+  });
+}
+
+/**
+ * ─── Reveal on scroll ─────────────────────────────────────
+ * Marca .is-visible quando o elemento entra na tela; depois da
+ * transição tira .reveal, para o hover dos cards voltar a animar.
+ */
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.remove('reveal'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      observer.unobserve(el);
+      el.classList.add('is-visible');
+      setTimeout(() => el.classList.remove('reveal', 'is-visible'), 1100);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+  items.forEach(el => observer.observe(el));
+}
+
+/**
+ * ─── Contadores ───────────────────────────────────────────
+ * Os números de resultado (90k+, 100%) contam a partir de zero
+ * quando entram na tela. O valor final já está no HTML.
+ */
+function initCounters() {
+  if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+  const counters = [...document.querySelectorAll('.about-metric-value, .project-metrics strong')]
+    .map(el => ({ el, match: el.textContent.trim().match(/^(\d+)(.*)$/) }))
+    .filter(({ match }) => match && Number(match[1]) >= 10);
+  if (!counters.length) return;
+
+  const run = ({ el, match }) => {
+    const target = Number(match[1]);
+    const suffix = match[2];
+    const start = performance.now();
+    const duration = 1400;
+
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      run(counters.find(c => c.el === entry.target));
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach(counter => {
+    // largura do valor final, para o sufixo não pular durante a contagem
+    counter.el.style.minWidth = `${counter.el.getBoundingClientRect().width}px`;
+    counter.el.textContent = `0${counter.match[2]}`;
+    observer.observe(counter.el);
+  });
+}
+
+/**
+ * ─── Spotlight nos cards ──────────────────────────────────
+ * Só com mouse: um brilho segue o cursor (estilo em components.css).
+ */
+function initSpotlight() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  document.querySelectorAll('.project-card, .exp-item, .edu-card, .article-card, .contact-link, .contact-intro, .pillar-card, .stack-table, .cta-band')
+    .forEach(card => {
+      card.classList.add('spotlight');
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+        card.style.setProperty('--my', `${event.clientY - rect.top}px`);
+      });
+    });
+}
+
+/**
+ * ─── Fluxo nos diagramas de pipeline ──────────────────────
+ * A animação (projects.css) só roda enquanto o diagrama está na tela.
+ */
+function initPipelineFlow() {
+  const pipelines = document.querySelectorAll('.pipeline');
+  if (!pipelines.length || prefersReducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => entry.target.classList.toggle('is-flowing', entry.isIntersecting));
+  }, { threshold: 0.35 });
+
+  pipelines.forEach(pipeline => observer.observe(pipeline));
 }
 
 /**

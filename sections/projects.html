@@ -45,6 +45,15 @@
           </div>
         </div>
 
+        <div class="project-outcome">
+          <span class="project-section-title">Resultado</span>
+          <ul class="project-metrics">
+            <li><strong>90k+</strong><span>jobs por dia</span></li>
+            <li><strong>100%</strong><span>da infra AWS em Terraform</span></li>
+          </ul>
+          <p class="project-result">Ingestão contínua em produção, sem intervenção humana no dia a dia.</p>
+        </div>
+
         <figure class="pipeline">
           <figcaption class="pipeline-caption">Arquitetura</figcaption>
           <ol class="pipeline-flow">
@@ -84,14 +93,6 @@
               <li><strong>Validação antes da carga:</strong> o ETL faz parsing de PDF e XLS/CSV com validação automática antes de gravar no data lake.</li>
               <li><strong>Observabilidade padronizada:</strong> SDKs internos compartilhados e handlers de logs e métricas enviados ao Grafana.</li>
             </ul>
-          </div>
-          <div class="project-section project-section--result">
-            <span class="project-section-title">Resultado</span>
-            <ul class="project-metrics">
-              <li><strong>90k+</strong><span>jobs por dia</span></li>
-              <li><strong>100%</strong><span>da infra AWS em Terraform</span></li>
-            </ul>
-            <p class="project-result">Ingestão contínua em produção, sem intervenção humana no dia a dia.</p>
           </div>
         </div>
 
@@ -139,6 +140,16 @@
           </div>
         </div>
 
+        <div class="project-outcome">
+          <span class="project-section-title">Resultado</span>
+          <ul class="project-metrics">
+            <li><strong>680+</strong><span>testes automatizados</span></li>
+            <li><strong>150+</strong><span>endpoints REST</span></li>
+            <li><strong>5</strong><span>pipelines no Prefect</span></li>
+          </ul>
+          <p class="project-result">Em produção na UFG, com exportações prontas para prestação de contas a TCU e CGU.</p>
+        </div>
+
         <figure class="pipeline">
           <figcaption class="pipeline-caption">Arquitetura</figcaption>
           <ol class="pipeline-flow">
@@ -178,15 +189,6 @@
               <li><strong>Monitorar a ausência de dado:</strong> um pipeline dedicado detecta quando uma ingestão não chegou e alerta por e-mail institucional.</li>
               <li><strong>Segurança na esteira:</strong> CI/CD no GitHub Actions com runner self-hosted, varredura Trivy e Bandit, e serviços em redes Docker isoladas atrás do Nginx com TLS.</li>
             </ul>
-          </div>
-          <div class="project-section project-section--result">
-            <span class="project-section-title">Resultado</span>
-            <ul class="project-metrics">
-              <li><strong>680+</strong><span>testes automatizados</span></li>
-              <li><strong>150+</strong><span>endpoints REST</span></li>
-              <li><strong>5</strong><span>pipelines no Prefect</span></li>
-            </ul>
-            <p class="project-result">Em produção na UFG, com exportações prontas para prestação de contas a TCU e CGU.</p>
           </div>
         </div>
 
@@ -236,6 +238,16 @@
           </div>
         </div>
 
+        <div class="project-outcome">
+          <span class="project-section-title">Resultado</span>
+          <ul class="project-metrics">
+            <li><strong>5</strong><span>tabelas Silver</span></li>
+            <li><strong>6</strong><span>tabelas Gold de KPIs</span></li>
+            <li><strong>3</strong><span>ambientes: dev, QA e prod</span></li>
+          </ul>
+          <p class="project-result">Pipeline Raw → Silver → Gold implementado e protótipo de serving com ferramentas de consulta por município e período, preparado para MCP.</p>
+        </div>
+
         <figure class="pipeline">
           <figcaption class="pipeline-caption">Arquitetura da POC</figcaption>
           <ol class="pipeline-flow">
@@ -275,15 +287,6 @@
               <li><strong>Contrato de infraestrutura:</strong> publicado pelo próprio Terraform no SSM Parameter Store.</li>
               <li><strong>Releases imutáveis:</strong> biblioteca compartilhada empacotada e versionada, promovida entre dev, QA e produção sem rebuild.</li>
             </ul>
-          </div>
-          <div class="project-section project-section--result">
-            <span class="project-section-title">Resultado</span>
-            <ul class="project-metrics">
-              <li><strong>5</strong><span>tabelas Silver</span></li>
-              <li><strong>6</strong><span>tabelas Gold de KPIs</span></li>
-              <li><strong>3</strong><span>ambientes: dev, QA e prod</span></li>
-            </ul>
-            <p class="project-result">Pipeline Raw → Silver → Gold implementado e protótipo de serving com ferramentas de consulta por município e período, preparado para MCP.</p>
           </div>
         </div>
 
@@ -335,6 +338,15 @@
           </div>
         </div>
 
+        <div class="project-outcome">
+          <span class="project-section-title">Resultado</span>
+          <p class="project-result">Código aberto, com CLI unificada e modelos de gradient boosting para predição do valor de mercado.</p>
+          <a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener" class="btn-secondary btn-small">
+            Ver repositório
+            <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
         <figure class="pipeline">
           <figcaption class="pipeline-caption">Pipeline</figcaption>
           <ol class="pipeline-flow">
@@ -375,14 +387,6 @@
               <li><strong>Reprodutibilidade:</strong> ambiente gerenciado com <code>uv</code> e Python 3.12, com notebooks da EDA ao tuning de hiperparâmetros.</li>
             </ul>
           </div>
-          <div class="project-section project-section--result">
-            <span class="project-section-title">Resultado</span>
-            <p class="project-result">Código aberto, com CLI unificada e modelos de gradient boosting para predição do valor de mercado.</p>
-            <a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener" class="btn-secondary btn-small">
-              Ver repositório
-              <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </a>
-          </div>
         </div>
 
         <div class="project-tags">
@@ -397,5 +401,27 @@
       </article>
 
     </div>
+
+    <!-- Chamada para contato depois dos projetos -->
+    <aside class="cta-band reveal" aria-labelledby="cta-band-title">
+      <div class="cta-band-text">
+        <p class="cta-band-kicker">
+          <span class="status-dot" aria-hidden="true"></span>
+          Disponível para novas oportunidades
+        </p>
+        <h3 class="cta-band-title" id="cta-band-title">Sua equipe precisa de alguém para construir ou escalar a plataforma de dados?</h3>
+        <p class="cta-band-desc">Posições de Engenharia de Dados e Data Platform, remoto ou híbrido. Respondo por e-mail ou LinkedIn.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="#contact" class="btn-primary">
+          Vamos conversar
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener" class="btn-secondary">
+          <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </aside>
   </div>
 </section>
