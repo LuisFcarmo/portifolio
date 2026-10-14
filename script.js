@@ -106,20 +106,20 @@ function createToggle(label, controlsId, extraClass = '') {
 }
 
 function initCardExpansion() {
-  // 1. Projetos: decisões e resultado ficam recolhidos no mobile
+  // 1. Projetos: decisões e resultado ficam recolhidos em qualquer largura
   document.querySelectorAll('.project-card').forEach(card => {
     const details = card.querySelector('.project-details');
     if (!details) return;
 
     details.id = details.id || `${card.id}-details`;
-    const closedLabel = 'Ver decisões de engenharia e resultado';
-    const toggleBtn = createToggle(closedLabel, details.id);
+    const closedLabel = 'Decisões de engenharia e resultado';
+    const toggleBtn = createToggle(closedLabel, details.id, 'project-toggle-btn');
     card.insertBefore(toggleBtn, details);
 
     toggleBtn.addEventListener('click', () => {
       const isExpanded = card.classList.toggle('details-expanded');
       toggleBtn.setAttribute('aria-expanded', String(isExpanded));
-      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar detalhes' : closedLabel;
+      toggleBtn.querySelector('span').textContent = isExpanded ? 'Ocultar decisões e resultado' : closedLabel;
     });
   });
 

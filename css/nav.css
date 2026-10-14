@@ -58,7 +58,7 @@ nav {
   display: block;
   padding-block: 0.4rem;
   color: var(--text-secondary);
-  font-size: 0.8125rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   text-decoration: none;
   transition: color var(--transition-fast);

@@ -13,22 +13,29 @@
   gap: 0.5rem;
   min-height: 44px;
   border-radius: var(--radius-sm);
-  font-size: 0.875rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
   transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-base), transform var(--transition-base);
 }
 
+/* Contornado: o único botão azul sólido da primeira dobra é o do hero */
 .nav-cta {
-  min-height: 44px;
-  padding: 0.65rem 1rem;
-  color: #fff;
-  background: var(--blue);
-  box-shadow: 0 8px 20px rgba(38, 99, 210, 0.2);
+  min-height: 40px;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  background: rgba(17, 23, 34, 0.48);
 }
 
-.nav-cta:hover,
+.nav-cta:hover {
+  border-color: var(--blue-border);
+  color: var(--text-primary);
+  background: var(--blue-dim);
+  transform: translateY(-1px);
+}
+
 .btn-primary:hover {
   color: #fff;
   background: #5b97ff;
@@ -61,20 +68,25 @@
 .btn-small {
   min-height: 40px;
   padding: 0.55rem 0.95rem;
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
 }
 
 /* ─── Tags & pills ───────────────────────────────────────── */
+/* Bloco com tags inline (e não flex) para o text-wrap: balance
+ * distribuir as tags entre as linhas e não sobrar uma sozinha. */
 .exp-tags,
 .project-tags,
 .pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  margin-bottom: -0.5rem;
+  font-size: 0; /* sem o espaço em branco entre as tags inline */
+  line-height: 0;
+  text-wrap: balance;
 }
 
 .tag,
 .pill {
+  margin: 0 0.5rem 0.5rem 0;
+  vertical-align: top;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -85,7 +97,7 @@
   color: var(--text-secondary);
   background: rgba(8, 10, 15, 0.4);
   font-family: var(--font-mono);
-  font-size: 0.69rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   line-height: 1.25;
   max-width: 100%;
@@ -121,7 +133,11 @@
 .tag .devicon-sqlalchemy-plain.colored,
 .pill .devicon-sqlalchemy-plain.colored,
 .tag .devicon-github-original.colored,
-.pill .devicon-github-original.colored {
+.pill .devicon-github-original.colored,
+.tag .devicon-pandas-plain.colored,
+.pill .devicon-pandas-plain.colored,
+.tag .devicon-htmx-plain.colored,
+.pill .devicon-htmx-plain.colored {
   color: var(--text-secondary);
 }
 
@@ -142,47 +158,46 @@
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
 }
 
-/* ─── Card expansion (mobile accordion) ──────────────────── */
-/* O que cada seção esconde fica no CSS da seção; aqui só o botão. */
+/* ─── Card expansion (accordion) ─────────────────────────── */
+/* O que cada seção esconde fica no CSS da seção; aqui só o botão.
+ * Nos projetos ele aparece em qualquer largura; nos demais, só no mobile. */
 .card-toggle-btn {
   display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 44px;
+  margin-block: 0.65rem 0.25rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--blue-light);
+  background: rgba(79, 140, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.card-toggle-btn:hover,
+.card-toggle-btn:focus-visible {
+  border-color: var(--blue-border);
+  color: var(--text-primary);
+  background: var(--blue-dim);
+}
+
+.card-toggle-btn .toggle-icon {
+  transition: transform var(--transition-fast);
+}
+
+.details-expanded .card-toggle-btn .toggle-icon {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 640px) {
-  .card-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    width: 100%;
-    min-height: 44px;
-    margin-block: 0.65rem 0.25rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    color: var(--blue-light);
-    background: rgba(79, 140, 255, 0.08);
-    font-family: var(--font-mono);
-    font-size: 0.73rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-  }
-
-  .card-toggle-btn:hover,
-  .card-toggle-btn:focus-visible {
-    border-color: var(--blue-border);
-    color: var(--text-primary);
-    background: var(--blue-dim);
-  }
-
-  .card-toggle-btn .toggle-icon {
-    transition: transform var(--transition-fast);
-  }
-
-  .details-expanded .card-toggle-btn .toggle-icon {
-    transform: rotate(180deg);
-  }
+  .card-toggle-btn { display: inline-flex; }
 }
 
 /* ─── Tactile feedback ───────────────────────────────────── */
@@ -215,7 +230,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   opacity: 0;
   pointer-events: none;
@@ -231,5 +246,5 @@
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 375px) {
-  .btn-primary, .btn-secondary { min-height: 44px; padding-inline: 0.85rem; font-size: 0.825rem; }
+  .btn-primary, .btn-secondary { min-height: 44px; padding-inline: 0.85rem; font-size: var(--fs-sm); }
 }

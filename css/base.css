@@ -12,7 +12,9 @@
   --bg-inset: rgba(8, 10, 15, 0.55);
 
   --surface-card: linear-gradient(145deg, rgba(17, 23, 34, 0.9), rgba(13, 17, 25, 0.82));
-  --surface-section: linear-gradient(180deg, rgba(13, 17, 25, 0.38) 0%, rgba(13, 17, 25, 0.15) 60%, transparent 100%);
+  /* Faixa das seções alternadas (Sobre, Projetos, Artigos) */
+  --surface-section: rgba(13, 17, 25, 0.62);
+  --border-section: rgba(170, 187, 210, 0.07);
 
   --border: rgba(170, 187, 210, 0.14);
   --border-strong: rgba(170, 187, 210, 0.24);
@@ -39,6 +41,14 @@
   --radius-md: 14px;
   --radius-lg: 20px;
 
+  /* Escala tipográfica: mono nunca abaixo de --fs-xs (12px) */
+  --fs-xs: 0.75rem;     /* 12px: rótulos, tags e metadados em mono */
+  --fs-sm: 0.8125rem;   /* 13px: legendas e texto auxiliar */
+  --fs-md: 0.875rem;    /* 14px: botões e texto de apoio */
+  --fs-body: 0.9375rem; /* 15px: texto dentro de cards */
+  --fs-base: 1rem;      /* 16px: texto corrido */
+  --fs-lg: 1.1875rem;   /* 19px: títulos de card */
+
   --content-max: 1200px;
   --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.2);
   --shadow-card-hover: 0 20px 44px rgba(0, 0, 0, 0.32);
@@ -51,11 +61,12 @@
 /* ─── Reset and foundations ───────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* overflow-x: clip (e não hidden) para não quebrar position: sticky */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -63,7 +74,7 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: var(--font-sans);
   position: relative;
   color: var(--text-primary);
@@ -138,17 +149,15 @@ a { color: inherit; }
 
 section {
   position: relative;
-  overflow: hidden;
-  padding-block: clamp(5.25rem, 9vw, 8.5rem);
-  scroll-margin-top: 5.5rem;
+  overflow: clip;
+  padding-block: clamp(4.5rem, 7vw, 6rem);
+  scroll-margin-top: 4.5rem;
 }
 
-.divider {
-  width: min(calc(100% - clamp(2.5rem, 6vw, 4rem)), var(--content-max));
-  height: 1px;
-  margin: 0 auto;
-  border: 0;
-  background: linear-gradient(90deg, transparent, var(--border) 12%, var(--border) 88%, transparent);
+/* Seções alternadas: faixa levemente mais clara no lugar de divisores */
+.section-band {
+  border-block: 1px solid var(--border-section);
+  background: var(--surface-section);
 }
 
 /* ─── Motion ─────────────────────────────────────────────── */
@@ -177,7 +186,7 @@ section {
   margin: 0 0 1rem;
   color: var(--blue-light);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1.4;
@@ -198,7 +207,7 @@ h2.section-title {
   color: var(--text-primary);
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.035em;
   line-height: 1.08;
   text-wrap: balance;
 }
@@ -207,17 +216,17 @@ h2.section-title {
   max-width: 62ch;
   margin: 0 0 clamp(2.5rem, 5vw, 4rem);
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   line-height: 1.75;
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 820px) {
-  section { scroll-margin-top: 5rem; }
+  section { scroll-margin-top: 4rem; }
 }
 
 @media (max-width: 640px) {
-  section { padding-block: 4rem; }
+  section { padding-block: 3.5rem; }
   h2.section-title { font-size: clamp(1.75rem, 8vw, 2.4rem); }
 }
 
