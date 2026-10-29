@@ -307,6 +307,107 @@
         <span class="projects-category-line"></span>
       </div>
 
+      <!-- Garimpei -->
+      <article class="project-card reveal" id="project-garimpei">
+        <div class="project-card-header">
+          <div class="project-header-meta">
+            <span class="project-status project-status--production">Em produção</span>
+            <span class="project-role">Engenharia de Dados &amp; Full-stack</span>
+          </div>
+          <div class="project-links-top">
+            <span class="project-company">
+              <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              <a href="https://garimpei-two.vercel.app/" target="_blank" rel="noopener">garimpei ↗</a>
+            </span>
+            <span class="project-private" title="Repositório privado">
+              <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Código privado
+            </span>
+          </div>
+        </div>
+
+        <h3 class="project-title">Garimpei — Garimpo Automático e Precificação para Revenda na Enjoei</h3>
+
+        <div class="project-brief">
+          <div class="project-brief-item">
+            <span class="project-section-title">Problema</span>
+            <p>Achar peça que dá lucro na Enjoei é garimpo manual: o site não filtra por margem nem por frete, e a maioria dos anúncios baratos deixa de compensar depois da taxa e do envio.</p>
+          </div>
+          <div class="project-brief-item">
+            <span class="project-section-title">Solução</span>
+            <p>Um motor que estima o preço de revenda pelo próprio mercado, calcula o teto de compra para uma margem mínima de 35%, filtra pelo frete até Goiânia e dá nota de 0 a 100 a cada peça. Roda sozinho três vezes por dia e avisa por e-mail quando aparece algo que vale a pena.</p>
+          </div>
+        </div>
+
+        <div class="project-outcome">
+          <span class="project-section-title">Resultado</span>
+          <ul class="project-metrics">
+            <li><strong>79</strong><span>marcas na pesquisa de giro</span></li>
+            <li><strong>794</strong><span>cotações reais de frete</span></li>
+            <li><strong>3×</strong><span>rodadas automáticas por dia</span></li>
+          </ul>
+          <p class="project-result">Em produção na Vercel e em uso diário numa operação real de revenda, com estoque integrado: custo, preço de venda, menor valor aceito e lucro por peça. Acesso restrito por login Google.</p>
+          <a href="https://garimpei-two.vercel.app/" target="_blank" rel="noopener" class="btn-secondary btn-small" title="Login restrito a contas liberadas">
+            Ver o app
+            <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+
+        <figure class="pipeline">
+          <figcaption class="pipeline-caption">Pipeline do garimpo</figcaption>
+          <ol class="pipeline-flow">
+            <li class="pipeline-stage">
+              <span class="stage-name">Fonte</span>
+              <span class="stage-tech">API da Enjoei · filtros por categoria</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Mercado</span>
+              <span class="stage-tech">Revenda estimada pelo p25 dos usados</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Teto</span>
+              <span class="stage-tech">Taxas + margem mínima de 35%</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Frete</span>
+              <span class="stage-tech">Cotação real ou tabela por UF</span>
+            </li>
+            <li class="pipeline-stage">
+              <span class="stage-name">Nota</span>
+              <span class="stage-tech">0–100 · classes A a D · Observando</span>
+            </li>
+          </ol>
+          <ul class="pipeline-rails">
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>GitHub Actions · 7h, 13h e 19h · aviso por e-mail</span></li>
+            <li class="pipeline-rail"><span class="pipeline-rail-label">Infra</span><span>FastAPI na Vercel (São Paulo) · Postgres no Neon · login Google com lista de acesso</span></li>
+          </ul>
+        </figure>
+
+        <div class="project-details">
+          <div class="project-section">
+            <span class="project-section-title">Decisões de engenharia</span>
+            <ul class="project-section-list">
+              <li><strong>Filtros guiados por dados:</strong> pesquisa de giro de 79 marcas e uma amostra de 3.000 anúncios sorteados por ID sequencial (27% vendidos) definem o que o garimpo procura. Esportivas e grifes com pouca oferta giram mais; fast fashion, pouco.</li>
+              <li><strong>Frete calibrado e medido:</strong> sem sessão da Enjoei, uma tabela por estado feita com 794 cotações reais (percentil 75) substitui a cotação. Conferi contra o frete real: cerca de 2 em cada 3 peças aprovadas acertam, e o app deixa isso claro.</li>
+              <li><strong>Estimativa conservadora:</strong> a revenda usa o percentil 25 dos usados da mesma marca e tipo, não a média, e a busca vai das mais baratas até o teto de compra.</li>
+              <li><strong>Um motor, três interfaces:</strong> o mesmo código atende a web, uma CLI com saída JSON e uma skill de agente de IA que garimpa e já preenche o Observando.</li>
+              <li><strong>Aviso sem ruído:</strong> o e-mail só sai quando há peça nova ou queda de preço, e a tela avisa se passar 14 horas sem rodada.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-tags">
+          <span class="tag"><i class="devicon-python-plain colored" aria-hidden="true"></i> Python</span>
+          <span class="tag"><i class="devicon-fastapi-plain colored" aria-hidden="true"></i> FastAPI</span>
+          <span class="tag"><i class="devicon-postgresql-plain colored" aria-hidden="true"></i> PostgreSQL (Neon)</span>
+          <span class="tag"><i class="devicon-githubactions-plain colored" aria-hidden="true"></i> GitHub Actions</span>
+          <span class="tag">Vercel</span>
+          <span class="tag"><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</span>
+          <span class="tag"><i class="devicon-pytest-plain colored" aria-hidden="true"></i> pytest</span>
+          <span class="tag">OAuth Google</span>
+        </div>
+      </article>
+
       <!-- Meu Apê -->
       <article class="project-card reveal" id="project-meu-ape">
         <div class="project-card-header">
