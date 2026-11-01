@@ -1,0 +1,44 @@
+/* ─── Temas por projeto ───────────────────────────────────────
+ * Cada projeto tem uma cor própria (data-theme), escolhida pelo tema
+ * dele: ciano para o lakehouse, rosa para o garimpo (as cores do app), argila para imóveis. Só redefine as variáveis do azul; o resto do site segue igual.
+ * O padrão (blue) vem de base.css.
+ */
+[data-theme='cyan'] {
+  --blue: #22c3e6;
+  --blue-light: #67e0f5;
+  --blue-dim: rgba(34, 195, 230, 0.1);
+  --blue-faint: rgba(34, 195, 230, 0.05);
+  --blue-glow: rgba(34, 195, 230, 0.16);
+  --blue-border: rgba(103, 224, 245, 0.4);
+  --border-focus: #67e0f5;
+}
+
+/* Garimpei: rosa e ameixa, as cores do próprio app */
+[data-theme='rose'] {
+  --blue: #e5527f;
+  --blue-light: #ff9fba;
+  --blue-dim: rgba(229, 82, 127, 0.12);
+  --blue-faint: rgba(229, 82, 127, 0.06);
+  --blue-glow: rgba(229, 82, 127, 0.16);
+  --blue-border: rgba(255, 159, 186, 0.4);
+  --border-focus: #ff9fba;
+
+  /* Fundos com um toque de ameixa, como o painel escuro do app */
+  --bg-deep: #07050a;
+  --bg: #0d0911;
+  --bg-surface: #140e18;
+  --bg-card: #1a1220;
+  --bg-card-hover: #20152a;
+  --bg-inset: rgba(7, 5, 10, 0.6);
+}
+
+/* Meu Apê: argila, cor de tijolo, para o tema de imóveis */
+[data-theme='clay'] {
+  --blue: #e0795a;
+  --blue-light: #f0a083;
+  --blue-dim: rgba(224, 121, 90, 0.1);
+  --blue-faint: rgba(224, 121, 90, 0.05);
+  --blue-glow: rgba(224, 121, 90, 0.15);
+  --blue-border: rgba(240, 160, 131, 0.4);
+  --border-focus: #f0a083;
+}

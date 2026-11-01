@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Apê | Luis Cesar</title>
+  <meta name="description" content="O mesmo imóvel de Goiânia aparece anunciado por várias imobiliárias, o que gera ruído e duplicidade em qualquer análise de preço feita sobre os anúncios." />
+  <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
+  <link rel="stylesheet" href="../css/base.css?v=20261101" />
+  <link rel="stylesheet" href="../css/components.css?v=20261101" />
+  <link rel="stylesheet" href="../css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="../css/theme.css?v=20261101" />
+  <link rel="stylesheet" href="../css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="../css/project-page.css?v=20261101" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261101" />
+</head>
+<body class="project-page" data-theme="clay" id="top">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="../index.html#about">Sobre</a></li>
+        <li><a href="../index.html#experience">Experiência</a></li>
+        <li><a href="../index.html#projects" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="../index.html#stack">Stack</a></li>
+        <li><a href="../index.html#articles">Artigos</a></li>
+        <li class="nav-links-contact"><a href="../index.html#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta"><span class="status-dot" aria-hidden="true"></span>Fale comigo</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <span class="scroll-progress" aria-hidden="true"></span>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="pp-hero">
+      <div class="container">
+        <a href="../index.html#projects" class="pp-back"><span aria-hidden="true">←</span> Voltar aos projetos</a>
+        <p class="pp-eyebrow">Projeto 04 / 04 · Pessoais & Open Source</p>
+        <h1 class="pp-title">Meu Apê</h1>
+        <p class="pp-subtitle">Pipeline de Dados, Deduplicação & ML Imobiliário</p>
+        <dl class="pp-facts">
+          <div><dt>Tipo</dt><dd>Open source</dd></div>
+          <div><dt>Vínculo</dt><dd>Projeto pessoal</dd></div>
+          <div><dt>Papel</dt><dd>Engenharia de dados &amp; Machine Learning</dd></div>
+          <div><dt>Status</dt><dd><span class="pp-fact-status pp-fact-status--os">Código aberto</span></dd></div>
+          <div><dt>Acesso</dt><dd><a href="https://github.com/gauloish/meu-ape" target="_blank" rel="noopener">Repositório no GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div class="pp-block pp-brief reveal">
+        <p class="pp-kicker">Contexto</p>
+        <div class="project-brief">
+<div class="project-brief-item">
+<span class="project-section-title">Problema</span>
+<p>O mesmo imóvel de Goiânia aparece anunciado por várias imobiliárias, o que gera ruído e duplicidade em qualquer análise de preço feita sobre os anúncios.</p>
+</div>
+<div class="project-brief-item">
+<span class="project-section-title">Solução</span>
+<p>Um pipeline de ponta a ponta: extração concorrente dos portais, deduplicação pelo imóvel físico (e não pelo anúncio) e modelos de regressão para estimar o valor de mercado.</p>
+</div>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Resultado</p>
+        <div class="project-outcome">
+<span class="project-section-title">Resultado</span>
+<p class="project-result">Código aberto, com CLI unificada e modelos de gradient boosting para predição do valor de mercado.</p>
+<a class="btn-secondary btn-small" href="https://github.com/gauloish/meu-ape" rel="noopener" target="_blank">
+            Ver repositório
+            <svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="13"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+</a>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Arquitetura</p>
+        <figure class="pipeline">
+<figcaption class="pipeline-caption">Pipeline</figcaption>
+<ol class="pipeline-flow">
+<li class="pipeline-stage">
+<span class="stage-name">Fontes</span>
+<span class="stage-tech">Portais imobiliários</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Extração</span>
+<span class="stage-tech">curl_cffi · asyncio · checkpoint em CSV</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Deduplicação</span>
+<span class="stage-tech">Consolidação do imóvel físico</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Features</span>
+<span class="stage-tech">Enriquecimento geoespacial · outliers</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Modelos</span>
+<span class="stage-tech">XGBoost · LightGBM</span>
+</li>
+</ol>
+<ul class="pipeline-rails">
+<li class="pipeline-rail"><span class="pipeline-rail-label">CLI</span><span><code>meu-ape scrape</code> · <code>scrape-async</code> · <code>deduplicate</code> · <code>validate</code></span></li>
+<li class="pipeline-rail"><span class="pipeline-rail-label">Ambiente</span><span>uv · Python 3.12 · Jupyter</span></li>
+</ul>
+</figure>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Decisões de engenharia</p>
+        <ol class="pp-decisions">
+          <li class="pp-decision reveal"><span class="pp-decision-n">01</span><div><strong>Raspagem particionada:</strong> modos síncrono e assíncrono com <code>curl_cffi</code>, para lidar com proteções anti-bot, e checkpoint em buffer CSV para retomar sem recomeçar.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">02</span><div><strong>Cobertura verificada:</strong> o subcomando <code>validate</code> confere a cobertura do portal na extração.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">03</span><div><strong>Deduplicação por imóvel físico:</strong> o mesmo imóvel anunciado por imobiliárias diferentes vira um único registro.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">04</span><div><strong>Reprodutibilidade:</strong> ambiente gerenciado com <code>uv</code> e Python 3.12, com notebooks da EDA ao tuning de hiperparâmetros.</div></li>
+        </ol>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Stack</p>
+        <div class="project-tags">
+<span class="tag"><i aria-hidden="true" class="devicon-python-plain colored"></i> Python 3.12</span>
+<span class="tag"><i aria-hidden="true" class="devicon-pandas-plain colored"></i> Pandas / Polars</span>
+<span class="tag"><i aria-hidden="true" class="devicon-scikitlearn-plain colored"></i> Scikit-Learn</span>
+<span class="tag">XGBoost / LightGBM</span>
+<span class="tag">curl_cffi · asyncio</span>
+<span class="tag"><i aria-hidden="true" class="devicon-jupyter-plain colored"></i> Jupyter</span>
+<span class="tag">uv</span>
+</div>
+      </div>
+    </div>
+
+    <div class="pp-end">
+      <div class="container">
+        <p class="pp-kicker">Mais trabalhos</p>
+        <h2 class="pp-end-title">Veja os outros projetos</h2>
+        <div class="pp-end-actions">
+          <a href="../index.html#projects" class="btn-primary">Todos os projetos <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="plataforma-de-dados.html" class="btn-secondary">Próximo: Plataforma <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a href="../index.html#contact" class="btn-secondary">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">LUIS CESAR<span>.</span></p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#top" class="footer-top">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261101" defer></script>
+</body>
+</html>

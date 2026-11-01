@@ -1,54 +1,128 @@
 /* ─── Stack ───────────────────────────────────────────────────
- * Tabela de categorias; as pills vêm de components.css.
+ * Dois níveis: o que roda em produção no dia a dia (grade de grupos) e,
+ * abaixo, o que complementa (linhas com filetes). As pills vêm de components.css.
  */
-.stack-table {
-  padding-inline: clamp(1.15rem, 3vw, 2rem);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: linear-gradient(145deg, rgba(17, 23, 34, 0.85), rgba(13, 17, 25, 0.75));
-  box-shadow: var(--shadow-card);
+.stack-block + .stack-block { margin-top: clamp(3rem, 6vw, 4.5rem); }
+
+.stack-block-title {
+  margin: 0 0 1.25rem;
+  color: var(--blue-light);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.stack-row {
+/* Núcleo: quatro grupos lado a lado, com filetes compartilhados */
+.stack-core {
   display: grid;
-  grid-template-columns: 11.5rem minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: start;
-  padding-block: 1.1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--blue-light);
+  border-left: 1px solid var(--border);
+}
+
+.stack-group {
+  padding: 1.5rem 1.4rem 1.6rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--transition-fast);
+}
+
+.stack-group:hover { background: var(--blue-faint); }
+
+.stack-group-title {
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.stack-group-note {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+/* Complementar: grade de três colunas, nomes em texto corrido */
+.stack-extra {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--border-strong);
+  border-left: 1px solid var(--border);
+}
+
+.stack-mini {
+  padding: 1.25rem 1.4rem 1.4rem;
+  border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-.stack-row:last-child { border-bottom: 0; }
-
-/* padding-top alinha o texto ao centro da primeira linha de pills (32px) */
-.stack-row-label {
-  margin: 0;
-  padding-top: 0.3rem;
-  color: var(--text-secondary);
-  font-size: var(--fs-md);
+.stack-mini-title {
+  margin: 0 0 0.7rem;
+  color: var(--text-primary);
+  font-size: var(--fs-base);
   font-weight: 600;
-  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+
+.stack-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+}
+
+.stack-names li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   transition: color var(--transition-fast);
 }
 
-.stack-row:hover .stack-row-label { color: var(--blue-light); }
-
-.stack-practices {
-  margin: 0;
-  padding-top: 0.3rem;
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
-  line-height: 1.7;
+.stack-names li i {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1;
 }
 
-/* ─── Responsive ─────────────────────────────────────────── */
-@media (max-width: 720px) {
-  .stack-row {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
+/* Ícones monocromáticos do devicon que somem no fundo escuro */
+.stack-names .devicon-nextjs-plain.colored,
+.stack-names .devicon-linux-plain.colored,
+.stack-names .devicon-django-plain.colored,
+.stack-names .devicon-sqlalchemy-plain.colored,
+.stack-names .devicon-github-original.colored,
+.stack-names .devicon-htmx-plain.colored {
+  color: var(--text-secondary);
+}
+.stack-names li:hover { color: var(--text-primary); }
 
-  .stack-row-label,
-  .stack-practices { padding-top: 0; }
+/* Separador · entre os nomes; o do início de cada linha é cortado pelo overflow */
+.stack-names li + li::before {
+  position: absolute;
+  left: -0.62rem;
+  color: var(--text-muted);
+  content: '·';
+}
+
+.stack-names { overflow: hidden; }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .stack-core { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stack-extra { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .stack-core,
+  .stack-extra { grid-template-columns: 1fr; }
 }

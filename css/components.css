@@ -1,6 +1,6 @@
 /* ─── Components ──────────────────────────────────────────────
  * Peças reutilizadas em várias seções: botões, tags, status,
- * botão de expandir (accordion mobile) e toast de cópia.
+ * botão de expandir (accordion) e toast de cópia.
  */
 
 /* ─── Buttons ────────────────────────────────────────────── */
@@ -10,87 +10,64 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.9rem;
   min-height: 44px;
-  border-radius: var(--radius-sm);
   font-size: var(--fs-md);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
-  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-base), transform var(--transition-base);
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-base);
 }
 
-/* Contornado: o único botão azul sólido da primeira dobra é o do hero */
-.nav-cta {
-  min-height: 40px;
-  padding: 0.55rem 0.95rem;
-  border: 1px solid var(--border-strong);
-  color: var(--text-primary);
-  background: rgba(17, 23, 34, 0.48);
-}
-
-.nav-cta:hover {
-  border-color: var(--blue-border);
-  color: var(--text-primary);
-  background: var(--blue-dim);
-  transform: translateY(-1px);
+/* Principal: azul sólido, texto escuro. Sobe 3px no hover. */
+.btn-primary {
+  padding: 0.8rem 1.15rem;
+  color: var(--bg);
+  background: var(--blue-light);
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background: #5b97ff;
-  box-shadow: 0 12px 26px rgba(38, 99, 210, 0.3);
-  transform: translateY(-1px);
+  background: #a9c8ff;
+  transform: translateY(-3px);
 }
 
-.btn-primary {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 0.75rem 1.2rem;
-  color: #fff;
-  background: var(--blue);
-  box-shadow: 0 10px 24px rgba(38, 99, 210, 0.2);
+/* Contornado */
+.btn-secondary,
+.nav-cta {
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--blue-border);
+  color: var(--blue-light);
+  background: transparent;
 }
 
-/* Reflexo que atravessa o botão no hover */
-.btn-primary::after {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
-  content: '';
-  transform: translateX(-120%);
-  transition: transform 700ms var(--ease-out);
+.btn-secondary:hover,
+.nav-cta:hover {
+  border-color: var(--blue-light);
+  background: var(--blue-dim);
+  transform: translateY(-3px);
 }
 
-.btn-primary:hover::after { transform: translateX(120%); }
+.nav-cta {
+  min-height: 40px;
+  padding: 0.55rem 0.95rem;
+  gap: 0.6rem;
+  font-size: var(--fs-sm);
+}
 
 .btn-primary svg,
 .btn-secondary svg { transition: transform var(--transition-fast); }
 
 .btn-primary:hover svg { transform: translateX(3px); }
 
-.btn-secondary {
-  padding: 0.7rem 1.15rem;
-  border: 1px solid var(--border-strong);
-  color: var(--text-secondary);
-  background: rgba(17, 23, 34, 0.48);
-}
-
-.btn-secondary:hover {
-  border-color: var(--blue-border);
-  color: var(--text-primary);
-  background: var(--blue-dim);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-  transform: translateY(-1px);
-}
-
 /* Botão só com ícone (GitHub, LinkedIn no hero) */
 .btn-icon {
   width: 44px;
   padding: 0;
+  border-color: var(--border-strong);
+  color: var(--text-secondary);
 }
+
+.btn-icon:hover { color: var(--blue-light); }
 
 .btn-small {
   min-height: 40px;
@@ -116,28 +93,26 @@
   vertical-align: top;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   min-height: 32px;
-  padding: 0.35rem 0.65rem;
+  padding: 0.35rem 0.7rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
   color: var(--text-secondary);
-  background: rgba(8, 10, 15, 0.4);
+  background: transparent;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25;
   max-width: 100%;
   overflow-wrap: break-word;
-  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .tag:hover,
 .pill:hover {
   border-color: var(--blue-border);
   color: var(--text-primary);
-  background: var(--blue-dim);
-  transform: translateY(-1px);
+  background: var(--blue-faint);
 }
 
 .tag i,
@@ -172,7 +147,7 @@
   border-color: var(--blue-border);
   color: var(--text-primary);
   background: var(--blue-dim);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ─── Status dot ─────────────────────────────────────────── */
@@ -191,42 +166,6 @@
   animation: dotPulse 2.4s ease-out infinite;
 }
 
-/* ─── Spotlight ──────────────────────────────────────────── */
-/* script.js marca os cards com .spotlight (só com mouse) e atualiza
- * --mx/--my: um brilho suave segue o cursor no fundo e na borda. */
-.spotlight {
-  position: relative;
-  isolation: isolate;
-}
-
-.spotlight::before,
-.spotlight::after {
-  position: absolute;
-  border-radius: inherit;
-  content: '';
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
-}
-
-.spotlight::before {
-  z-index: -1;
-  inset: 0;
-  background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(79, 140, 255, 0.09), transparent 45%);
-}
-
-.spotlight::after {
-  inset: -1px;
-  padding: 1px;
-  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 180, 255, 0.6), transparent 55%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-}
-
-.spotlight:hover::before,
-.spotlight:hover::after { opacity: 1; }
-
 /* ─── Card expansion (accordion) ─────────────────────────── */
 /* O que cada seção esconde fica no CSS da seção; aqui só o botão.
  * Nos projetos ele aparece em qualquer largura; nos demais, só no mobile. */
@@ -234,18 +173,18 @@
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   width: 100%;
   min-height: 44px;
   margin-block: 0.65rem 0.25rem;
   padding: 0.65rem 1rem;
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
   color: var(--blue-light);
-  background: rgba(79, 140, 255, 0.08);
+  background: transparent;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   cursor: pointer;
   transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
@@ -292,15 +231,11 @@
   gap: 0.55rem;
   padding: 0.75rem 1.25rem;
   border: 1px solid var(--blue-border);
-  border-radius: var(--radius-md);
-  color: #fff;
-  background: rgba(13, 17, 25, 0.96);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(79, 140, 255, 0.2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  color: var(--text-primary);
+  background: var(--bg-card);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
-  font-weight: 600;
   opacity: 0;
   pointer-events: none;
   transition: opacity 220ms ease, transform 220ms cubic-bezier(0.2, 0.65, 0.3, 1);

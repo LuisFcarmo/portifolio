@@ -37,23 +37,24 @@
   <!-- Fontes: preconnect evita a cadeia style.css → @import → fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
   <!-- Devicon CDN para ícones de tecnologias -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
 
   <!-- CSS modular: a ordem importa (base → componentes → layout → seções) -->
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/nav.css" />
-  <link rel="stylesheet" href="css/sections/hero.css" />
-  <link rel="stylesheet" href="css/sections/about.css" />
-  <link rel="stylesheet" href="css/sections/experience.css" />
-  <link rel="stylesheet" href="css/sections/projects.css" />
-  <link rel="stylesheet" href="css/sections/stack.css" />
-  <link rel="stylesheet" href="css/sections/articles.css" />
-  <link rel="stylesheet" href="css/sections/contact.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/base.css?v=20261101" />
+  <link rel="stylesheet" href="css/components.css?v=20261101" />
+  <link rel="stylesheet" href="css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="css/theme.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/hero.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/about.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/experience.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/stack.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/articles.css?v=20261101" />
+  <link rel="stylesheet" href="css/sections/contact.css?v=20261101" />
+  <link rel="stylesheet" href="css/footer.css?v=20261101" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
@@ -61,7 +62,7 @@
   <!-- ─── NAVIGATION ────────────────────────────────── -->
   <nav id="navbar" aria-label="Navegação principal">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-prefix" aria-hidden="true">&gt;</span>Luis<span aria-hidden="true">.</span></a>
+      <a href="#hero" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
       <ul class="nav-links" id="nav-menu">
         <li><a href="#about">Sobre</a></li>
         <li><a href="#experience">Experiência</a></li>
@@ -109,17 +110,20 @@
   <!-- ─── FOOTER ────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
-      <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      <div>
+        <p class="footer-name">LUIS CESAR</p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
       <p class="footer-links">
         <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#hero" class="footer-top">Voltar ao topo ↑</a>
       </p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261101" defer></script>
 </body>
 </html>

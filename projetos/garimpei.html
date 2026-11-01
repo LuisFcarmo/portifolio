@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garimpei | Luis Cesar</title>
+  <meta name="description" content="Achar peça que dá lucro na Enjoei é garimpo manual: o site não filtra por margem nem por frete, e a maioria dos anúncios baratos deixa de compensar depois " />
+  <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
+  <link rel="stylesheet" href="../css/base.css?v=20261101" />
+  <link rel="stylesheet" href="../css/components.css?v=20261101" />
+  <link rel="stylesheet" href="../css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="../css/theme.css?v=20261101" />
+  <link rel="stylesheet" href="../css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="../css/project-page.css?v=20261101" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261101" />
+</head>
+<body class="project-page" data-theme="rose" id="top">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="../index.html#about">Sobre</a></li>
+        <li><a href="../index.html#experience">Experiência</a></li>
+        <li><a href="../index.html#projects" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="../index.html#stack">Stack</a></li>
+        <li><a href="../index.html#articles">Artigos</a></li>
+        <li class="nav-links-contact"><a href="../index.html#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta"><span class="status-dot" aria-hidden="true"></span>Fale comigo</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <span class="scroll-progress" aria-hidden="true"></span>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="pp-hero">
+      <div class="container">
+        <a href="../index.html#projects" class="pp-back"><span aria-hidden="true">←</span> Voltar aos projetos</a>
+        <p class="pp-eyebrow">Projeto 03 / 04 · Pessoal, feito pela PJ</p>
+        <h1 class="pp-title">Garimpei</h1>
+        <p class="pp-subtitle">Garimpo Automático e Precificação para Revenda na Enjoei</p>
+        <dl class="pp-facts">
+          <div><dt>Tipo</dt><dd>Projeto pessoal</dd></div>
+          <div><dt>Vínculo</dt><dd>Desenvolvido pela minha PJ, para uma cliente</dd></div>
+          <div><dt>Papel</dt><dd>Projeto e desenvolvimento de ponta a ponta · engenharia de dados e full-stack</dd></div>
+          <div><dt>Status</dt><dd><span class="pp-fact-status pp-fact-status--ok">Em produção</span></dd></div>
+          <div><dt>Acesso</dt><dd><a href="https://garimpei-two.vercel.app/" target="_blank" rel="noopener">garimpei-two.vercel.app ↗</a><span class="pp-fact-sub">Login restrito · código privado</span></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <figure class="pp-cover reveal">
+        <img src="../assets/projects/garimpei.jpg" width="1278" height="908" alt="Tela do Garimpei com a rodada de garimpo inteligente: peças examinadas, aprovadas e oportunidades analisadas" />
+      </figure>
+
+      <div class="pp-block pp-brief reveal">
+        <p class="pp-kicker">Contexto</p>
+        <div class="project-brief">
+<div class="project-brief-item">
+<span class="project-section-title">Problema</span>
+<p>Achar peça que dá lucro na Enjoei é garimpo manual: o site não filtra por margem nem por frete, e a maioria dos anúncios baratos deixa de compensar depois da taxa e do envio.</p>
+</div>
+<div class="project-brief-item">
+<span class="project-section-title">Solução</span>
+<p>Um motor que estima o preço de revenda pelo próprio mercado, calcula o teto de compra para uma margem mínima de 35%, filtra pelo frete até Goiânia e dá nota de 0 a 100 a cada peça. Roda sozinho três vezes por dia e avisa por e-mail quando aparece algo que vale a pena.</p>
+</div>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Resultado</p>
+        <div class="project-outcome">
+<span class="project-section-title">Resultado</span>
+<ul class="project-metrics">
+<li><strong>79</strong><span>marcas na pesquisa de giro</span></li>
+<li><strong>794</strong><span>cotações reais de frete</span></li>
+<li><strong>3×</strong><span>rodadas automáticas por dia</span></li>
+</ul>
+<p class="project-result">Entregue a uma cliente, em produção na Vercel e em uso diário na operação real de revenda dela, com estoque integrado: custo, preço de venda, menor valor aceito e lucro por peça. Acesso restrito por login Google.</p>
+<a class="btn-secondary btn-small" href="https://garimpei-two.vercel.app/" rel="noopener" target="_blank" title="Login restrito a contas liberadas">
+            Ver o app
+            <svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="13"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+</a>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Telas do sistema</p>
+        <div class="pp-gallery">
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-garimpo.jpg" width="1278" height="908" alt="Tela Garimpo inteligente do Garimpei" loading="lazy" />
+            <figcaption><strong>Garimpo inteligente</strong>Roda sozinho três vezes por dia, examina centenas de peças e pontua cada uma como aprovada, condicional ou descartada.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-buscar.jpg" width="1278" height="908" alt="Tela Busca do Garimpei" loading="lazy" />
+            <figcaption><strong>Busca</strong>Busca no Enjoei com filtros de marca, tamanho, preço e frete máximo para a minha região.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-guia.jpg" width="1278" height="908" alt="Tela Guia de compra do Garimpei" loading="lazy" />
+            <figcaption><strong>Guia de compra</strong>Mostra o que vende mais rápido por tipo de peça, com base em 438.843 vendas reais, e calcula se uma peça compensa.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-observando.jpg" width="1278" height="908" alt="Tela Observando do Garimpei" loading="lazy" />
+            <figcaption><strong>Observando</strong>Lista as peças vigiadas com o teto de compra, o lucro estimado e o aviso quando vale a pena comprar.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-estoque.jpg" width="1278" height="908" alt="Tela Meu estoque do Garimpei" loading="lazy" />
+            <figcaption><strong>Meu estoque</strong>Controle de custo, preço de venda, valor mínimo e lucro por peça, do preparo ao anúncio e à venda.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/garimpei-inicio.jpg" width="1278" height="908" alt="Tela Início do Garimpei" loading="lazy" />
+            <figcaption><strong>Início</strong>Resumo de vendas por mês, lucro já sem as taxas e as pendências do dia.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Arquitetura</p>
+        <figure class="pipeline">
+<figcaption class="pipeline-caption">Pipeline do garimpo</figcaption>
+<ol class="pipeline-flow">
+<li class="pipeline-stage">
+<span class="stage-name">Fonte</span>
+<span class="stage-tech">API da Enjoei · filtros por categoria</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Mercado</span>
+<span class="stage-tech">Revenda estimada pelo p25 dos usados</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Teto</span>
+<span class="stage-tech">Taxas + margem mínima de 35%</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Frete</span>
+<span class="stage-tech">Cotação real ou tabela por UF</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Nota</span>
+<span class="stage-tech">0–100 · classes A a D · Observando</span>
+</li>
+</ol>
+<ul class="pipeline-rails">
+<li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>GitHub Actions · 7h, 13h e 19h · aviso por e-mail</span></li>
+<li class="pipeline-rail"><span class="pipeline-rail-label">Infra</span><span>FastAPI na Vercel (São Paulo) · Postgres no Neon · login Google com lista de acesso</span></li>
+</ul>
+</figure>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Decisões de engenharia</p>
+        <ol class="pp-decisions">
+          <li class="pp-decision reveal"><span class="pp-decision-n">01</span><div><strong>Filtros guiados por dados:</strong> pesquisa de giro de 79 marcas e uma amostra de 3.000 anúncios sorteados por ID sequencial (27% vendidos) definem o que o garimpo procura. Esportivas e grifes com pouca oferta giram mais; fast fashion, pouco.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">02</span><div><strong>Frete calibrado e medido:</strong> sem sessão da Enjoei, uma tabela por estado feita com 794 cotações reais (percentil 75) substitui a cotação. Conferi contra o frete real: cerca de 2 em cada 3 peças aprovadas acertam, e o app deixa isso claro.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">03</span><div><strong>Estimativa conservadora:</strong> a revenda usa o percentil 25 dos usados da mesma marca e tipo, não a média, e a busca vai das mais baratas até o teto de compra.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">04</span><div><strong>Um motor, três interfaces:</strong> o mesmo código atende a web, uma CLI com saída JSON e uma skill de agente de IA que garimpa e já preenche o Observando.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">05</span><div><strong>Aviso sem ruído:</strong> o e-mail só sai quando há peça nova ou queda de preço, e a tela avisa se passar 14 horas sem rodada.</div></li>
+        </ol>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Stack</p>
+        <div class="project-tags">
+<span class="tag"><i aria-hidden="true" class="devicon-python-plain colored"></i> Python</span>
+<span class="tag"><i aria-hidden="true" class="devicon-fastapi-plain colored"></i> FastAPI</span>
+<span class="tag"><i aria-hidden="true" class="devicon-postgresql-plain colored"></i> PostgreSQL (Neon)</span>
+<span class="tag"><i aria-hidden="true" class="devicon-githubactions-plain colored"></i> GitHub Actions</span>
+<span class="tag">Vercel</span>
+<span class="tag"><i aria-hidden="true" class="devicon-javascript-plain colored"></i> JavaScript</span>
+<span class="tag"><i aria-hidden="true" class="devicon-pytest-plain colored"></i> pytest</span>
+<span class="tag">OAuth Google</span>
+</div>
+      </div>
+    </div>
+
+    <div class="pp-end">
+      <div class="container">
+        <p class="pp-kicker">Mais trabalhos</p>
+        <h2 class="pp-end-title">Veja os outros projetos</h2>
+        <div class="pp-end-actions">
+          <a href="../index.html#projects" class="btn-primary">Todos os projetos <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="meu-ape.html" class="btn-secondary">Próximo: Meu Apê <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a href="../index.html#contact" class="btn-secondary">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">LUIS CESAR<span>.</span></p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#top" class="footer-top">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261101" defer></script>
+</body>
+</html>

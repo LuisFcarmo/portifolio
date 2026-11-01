@@ -1,5 +1,4 @@
 <section id="hero" aria-labelledby="hero-name">
-  <canvas id="data-particles-canvas" aria-hidden="true"></canvas>
   <div class="container">
     <div class="hero-split">
 
@@ -16,19 +15,8 @@
         </p>
 
         <p class="hero-tagline hero-anim hero-anim-4">
-          Construo plataformas de dados na AWS: coleta em larga escala, orquestração no Airflow com mais de 90 mil jobs por dia em produção, Lakehouse Medallion com Apache Iceberg e a infraestrutura inteira descrita em Terraform.
+          Projeto e construo do zero plataformas de dados na AWS: Lakehouse Medallion com Apache Iceberg, orquestração no Airflow com mais de 90 mil jobs por dia em produção e toda a infraestrutura descrita em Terraform.
         </p>
-
-        <ul class="hero-stack hero-anim hero-anim-4" aria-label="Stack principal">
-          <li>Python</li>
-          <li>SQL</li>
-          <li>AWS</li>
-          <li>Airflow</li>
-          <li>Spark</li>
-          <li>Iceberg</li>
-          <li>Terraform</li>
-          <li>Docker</li>
-        </ul>
 
         <div class="hero-actions hero-anim hero-anim-5">
           <a href="#projects" class="btn-primary" id="hero-projects-btn">
@@ -64,66 +52,30 @@
 
       </div><!-- /hero-content -->
 
-      <!-- ── Terminal visual (decorativo: resume fatos das seções abaixo) ── -->
-      <div class="hero-visual hero-anim hero-anim-5" aria-hidden="true">
-        <div class="hero-terminal">
-          <div class="terminal-header">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-title">platform.status</span>
-          </div>
-          <div class="terminal-body">
-            <p class="terminal-prompt-line">
-              <span class="t-prompt">$</span>platform status --all
-            </p>
-            <div class="terminal-metrics">
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">airflow · dags</span>
-                <span class="t-val">90k+ jobs/dia</span>
-              </div>
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">aws batch · fargate</span>
-                <span class="t-val">terraform</span>
-              </div>
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">scrapy · playwright</span>
-                <span class="t-val">crawlers</span>
-              </div>
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">bedrock · agno</span>
-                <span class="t-val">agentes de ia</span>
-              </div>
-              <!-- [Oculto temporariamente - AutoTED/PROAD]
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">prefect · autoted</span>
-                <span class="t-val">em produção</span>
-              </div>
-              <div class="terminal-metric">
-                <span class="t-check">✓</span>
-                <span class="t-key">pytest · autoted</span>
-                <span class="t-val">680+ testes</span>
-              </div>
-              -->
-              <div class="terminal-metric">
-                <span class="t-check t-check--poc">◐</span>
-                <span class="t-key">glue · spark · iceberg</span>
-                <span class="t-val t-val--poc">poc medallion</span>
-              </div>
+      <!-- ── Ficha: onde atuo hoje e o que roda em produção ── -->
+      <div class="hero-visual hero-anim hero-anim-5">
+        <div class="hero-sheet">
+          <p class="sheet-title">Atuação hoje</p>
+          <dl class="sheet-roles">
+            <div>
+              <dt>Enel</dt>
+              <dd>DevOps &amp; Engenheiro de Dados Pleno <span>desde ago 2026</span></dd>
+              <dd class="sheet-note">Infraestrutura de dados na AWS construída do zero</dd>
             </div>
-            <p class="terminal-status-line">
-              <span class="t-status-dot"></span>
-              raw → silver → gold · all systems operational
-            </p>
-            <p class="terminal-prompt-line terminal-prompt-line--idle">
-              <span class="t-prompt">$</span><span class="t-cursor"></span>
-            </p>
-          </div>
+            <div>
+              <dt>Positivo Tecnologia</dt>
+              <dd>Data Platform Engineer Pleno <span>desde jan 2024 · de estágio a pleno</span></dd>
+              <dd class="sheet-note">Plataforma de dados em produção, 90k+ jobs/dia</dd>
+            </div>
+          </dl>
+          <p class="sheet-title">Foco técnico</p>
+          <ul class="sheet-list">
+            <li><span>Lakehouse · Iceberg · Medallion</span><strong>arquitetura</strong></li>
+            <li><span>Airflow · DAGs</span><strong>90k+ jobs/dia</strong></li>
+            <li><span>Terraform · AWS</span><strong>100% como código</strong></li>
+            <li><span>Glue · Spark · Step Functions</span><strong>pipelines</strong></li>
+            <li><span>Bedrock · Agno</span><strong>IA sobre os dados</strong></li>
+          </ul>
         </div>
       </div><!-- /hero-visual -->
 
@@ -131,3 +83,19 @@
   </div>
 
 </section>
+
+<div class="tech-strip">
+  <div class="tech-inner">
+    <p class="tech-label">Stack principal</p>
+    <ul class="tech-items" aria-label="Stack principal">
+      <li>Python</li>
+      <li>SQL</li>
+      <li>AWS</li>
+      <li>Airflow</li>
+      <li>Spark</li>
+      <li>Iceberg</li>
+      <li>Terraform</li>
+      <li>Docker</li>
+    </ul>
+  </div>
+</div>

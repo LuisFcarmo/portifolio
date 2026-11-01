@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lakehouse Medallion na AWS para Agentes de IA | Luis Cesar</title>
+  <meta name="description" content="Agentes de IA precisam de dados dos sistemas operacionais, mas consultá-los diretamente sobrecarrega a operação e acopla a IA à estrutura de cada sistema." />
+  <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
+  <link rel="stylesheet" href="../css/base.css?v=20261101" />
+  <link rel="stylesheet" href="../css/components.css?v=20261101" />
+  <link rel="stylesheet" href="../css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="../css/theme.css?v=20261101" />
+  <link rel="stylesheet" href="../css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="../css/project-page.css?v=20261101" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261101" />
+</head>
+<body class="project-page" data-theme="cyan" id="top">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="../index.html#about">Sobre</a></li>
+        <li><a href="../index.html#experience">Experiência</a></li>
+        <li><a href="../index.html#projects" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="../index.html#stack">Stack</a></li>
+        <li><a href="../index.html#articles">Artigos</a></li>
+        <li class="nav-links-contact"><a href="../index.html#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta"><span class="status-dot" aria-hidden="true"></span>Fale comigo</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <span class="scroll-progress" aria-hidden="true"></span>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="pp-hero">
+      <div class="container">
+        <a href="../index.html#projects" class="pp-back"><span aria-hidden="true">←</span> Voltar aos projetos</a>
+        <p class="pp-eyebrow">Projeto 02 / 04 · Profissional</p>
+        <h1 class="pp-title">Lakehouse Medallion na AWS para Agentes de IA</h1>
+        
+        <dl class="pp-facts">
+          <div><dt>Tipo</dt><dd>Profissional</dd></div>
+          <div><dt>Vínculo</dt><dd>Enel, via CEIA/UFG · projeto de PDI</dd></div>
+          <div><dt>Papel</dt><dd>DevOps &amp; Engenheiro de Dados Pleno</dd></div>
+          <div><dt>Status</dt><dd><span class="pp-fact-status pp-fact-status--poc">Prova de conceito</span></dd></div>
+          <div><dt>Acesso</dt><dd>Código privado<span class="pp-fact-sub">Projeto corporativo confidencial</span></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div class="pp-block pp-brief reveal">
+        <p class="pp-kicker">Contexto</p>
+        <div class="project-brief">
+<div class="project-brief-item">
+<span class="project-section-title">Problema</span>
+<p>Agentes de IA precisam de dados dos sistemas operacionais, mas consultá-los diretamente sobrecarrega a operação e acopla a IA à estrutura de cada sistema.</p>
+</div>
+<div class="project-brief-item">
+<span class="project-section-title">Solução</span>
+<p>Uma fronteira de desacoplamento: ingestão batch (D-1) e por CDC (DMS/Debezium + Amazon MSK) para um Lakehouse em S3 com Apache Iceberg, e uma camada de serving com contratos de leitura para os agentes. A POC implementa o pipeline Medallion com dados abertos da ANEEL.</p>
+</div>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Resultado</p>
+        <div class="project-outcome">
+<span class="project-section-title">Resultado</span>
+<ul class="project-metrics">
+<li><strong>5</strong><span>tabelas Silver</span></li>
+<li><strong>6</strong><span>tabelas Gold de KPIs</span></li>
+<li><strong>3</strong><span>ambientes: dev, QA e prod</span></li>
+</ul>
+<p class="project-result">Pipeline Raw → Silver → Gold implementado e protótipo de serving com ferramentas de consulta por município e período, preparado para MCP.</p>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Arquitetura</p>
+        <figure class="pipeline">
+<figcaption class="pipeline-caption">Arquitetura da POC</figcaption>
+<ol class="pipeline-flow">
+<li class="pipeline-stage">
+<span class="stage-name">Fonte</span>
+<span class="stage-tech">Dados abertos da ANEEL</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Raw</span>
+<span class="stage-tech">S3 · arquivos de origem</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Silver</span>
+<span class="stage-tech">Glue/Spark · 5 tabelas Iceberg</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Gold</span>
+<span class="stage-tech">6 tabelas de KPIs · Iceberg</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Consumo</span>
+<span class="stage-tech">Athena · serving para agentes (MCP)</span>
+</li>
+</ol>
+<ul class="pipeline-rails">
+<li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>AWS Step Functions</span></li>
+<li class="pipeline-rail"><span class="pipeline-rail-label">Infra &amp; segurança</span><span>Terraform · KMS · IAM de menor privilégio · SSM Parameter Store</span></li>
+</ul>
+</figure>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Decisões de engenharia</p>
+        <ol class="pp-decisions">
+          <li class="pp-decision reveal"><span class="pp-decision-n">01</span><div><strong>Custo sob controle:</strong> consultas no Athena passam por um workgroup com limite de custo por query.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">02</span><div><strong>Segurança por padrão:</strong> chave KMS com rotação, IAM de menor privilégio e HTTPS obrigatório nos buckets.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">03</span><div><strong>Contrato de infraestrutura:</strong> publicado pelo próprio Terraform no SSM Parameter Store.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">04</span><div><strong>Releases imutáveis:</strong> biblioteca compartilhada empacotada e versionada, promovida entre dev, QA e produção sem rebuild.</div></li>
+        </ol>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Stack</p>
+        <div class="project-tags">
+<span class="tag"><i aria-hidden="true" class="devicon-apachespark-original colored"></i> Apache Spark</span>
+<span class="tag"><i aria-hidden="true" class="devicon-python-plain colored"></i> PySpark</span>
+<span class="tag">Apache Iceberg</span>
+<span class="tag"><i aria-hidden="true" class="devicon-amazonwebservices-plain-wordmark colored"></i> Glue · Athena · Step Functions</span>
+<span class="tag"><i aria-hidden="true" class="devicon-terraform-plain colored"></i> Terraform</span>
+<span class="tag">KMS &amp; IAM</span>
+<span class="tag">MCP</span>
+</div>
+      </div>
+    </div>
+
+    <div class="pp-end">
+      <div class="container">
+        <p class="pp-kicker">Mais trabalhos</p>
+        <h2 class="pp-end-title">Veja os outros projetos</h2>
+        <div class="pp-end-actions">
+          <a href="../index.html#projects" class="btn-primary">Todos os projetos <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="garimpei.html" class="btn-secondary">Próximo: Garimpei <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a href="../index.html#contact" class="btn-secondary">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">LUIS CESAR<span>.</span></p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#top" class="footer-top">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261101" defer></script>
+</body>
+</html>

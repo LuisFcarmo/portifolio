@@ -1,30 +1,31 @@
 /* ─── Base ────────────────────────────────────────────────────
  * Tokens, reset, layout e cabeçalhos de seção.
- * Fontes carregadas via <link> no index.html (Inter + JetBrains Mono).
+ * Fontes carregadas via <link> no index.html (Space Grotesk + JetBrains Mono).
+ * Linguagem visual: cantos retos, bordas de 1px, rótulos em mono
+ * e seções numeradas, como uma ficha técnica.
  */
 
 /* ─── Design system ───────────────────────────────────────── */
 :root {
+  /* Fundos, do mais escuro ao mais claro */
+  --bg-deep: #05070b;
   --bg: #080a0f;
-  --bg-surface: #0d1119;
-  --bg-card: #111722;
-  --bg-card-hover: #151d2a;
-  --bg-inset: rgba(8, 10, 15, 0.55);
-
-  --surface-card: linear-gradient(145deg, rgba(17, 23, 34, 0.9), rgba(13, 17, 25, 0.82));
-  /* Faixa das seções alternadas (Sobre, Projetos, Artigos) */
-  --surface-section: rgba(13, 17, 25, 0.62);
-  --border-section: rgba(170, 187, 210, 0.07);
+  --bg-surface: #0c1018;
+  --bg-card: #101620;
+  --bg-card-hover: #141c29;
+  --bg-inset: rgba(5, 7, 11, 0.6);
 
   --border: rgba(170, 187, 210, 0.14);
-  --border-strong: rgba(170, 187, 210, 0.24);
+  --border-soft: rgba(170, 187, 210, 0.07);
+  --border-strong: rgba(170, 187, 210, 0.26);
   --border-focus: #70a1ff;
 
-  --text-primary: #f7f9fc;
-  --text-body: #dbe2ed;
-  --text-secondary: #b7c1d0;
+  --text-primary: #f4f7fc;
+  --text-body: #d3dbe8;
+  --text-secondary: #b0bccd;
   --text-muted: #8290a5;
 
+  /* Verde e âmbar só para status (produção, POC, disponível) */
   --green: #4ade80;
   --green-dim: rgba(74, 222, 128, 0.08);
   --green-border: rgba(74, 222, 128, 0.32);
@@ -32,14 +33,17 @@
   --amber-dim: rgba(251, 191, 36, 0.08);
   --amber-border: rgba(251, 191, 36, 0.32);
 
+  /* Destaque: o azul do site; as variações saem dele */
   --blue: #4f8cff;
   --blue-light: #8bb4ff;
-  --blue-dim: rgba(79, 140, 255, 0.12);
+  --blue-dim: rgba(79, 140, 255, 0.1);
+  --blue-faint: rgba(79, 140, 255, 0.045);
+  --blue-glow: rgba(79, 140, 255, 0.16);
   --blue-border: rgba(116, 166, 255, 0.4);
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
 
   /* Escala tipográfica: mono nunca abaixo de --fs-xs (12px) */
   --fs-xs: 0.75rem;     /* 12px: rótulos, tags e metadados em mono */
@@ -47,16 +51,14 @@
   --fs-md: 0.875rem;    /* 14px: botões e texto de apoio */
   --fs-body: 0.9375rem; /* 15px: texto dentro de cards */
   --fs-base: 1rem;      /* 16px: texto corrido */
-  --fs-lg: 1.1875rem;   /* 19px: títulos de card */
+  --fs-lg: 1.25rem;     /* 20px: títulos de card */
 
   --content-max: 1200px;
-  --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.2);
-  --shadow-card-hover: 0 20px 44px rgba(0, 0, 0, 0.32);
   --transition-fast: 180ms ease;
   --transition-base: 260ms cubic-bezier(0.2, 0.65, 0.3, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 /* ─── Reset and foundations ───────────────────────────────── */
@@ -68,6 +70,7 @@ html {
   font-size: 16px;
   max-width: 100%;
   overflow-x: clip;
+  scrollbar-color: var(--border-strong) var(--bg);
 }
 
 body {
@@ -79,17 +82,15 @@ body {
   font-family: var(--font-sans);
   position: relative;
   color: var(--text-primary);
-  background:
-    radial-gradient(800px 460px at 74% -12%, rgba(79, 140, 255, 0.17), transparent 70%),
-    var(--bg);
+  background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  color: var(--text-primary);
-  background: rgba(79, 140, 255, 0.42);
+  color: var(--bg);
+  background: var(--blue-light);
 }
 
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -106,7 +107,6 @@ a { color: inherit; }
 ::-webkit-scrollbar-thumb {
   background: var(--border-strong);
   border: 2px solid var(--bg);
-  border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
 
@@ -116,9 +116,9 @@ a { color: inherit; }
   top: 1rem;
   left: 1rem;
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  background: var(--blue);
+  color: var(--bg);
+  background: var(--blue-light);
+  font-weight: 700;
   text-decoration: none;
   transform: translateY(-180%);
   transition: transform var(--transition-fast);
@@ -151,14 +151,14 @@ a { color: inherit; }
 section {
   position: relative;
   overflow: clip;
-  padding-block: clamp(4.5rem, 7vw, 6rem);
+  padding-block: clamp(4.5rem, 8vw, 7rem);
   scroll-margin-top: 4.5rem;
 }
 
-/* Seções alternadas: faixa levemente mais clara no lugar de divisores */
+/* Seções alternadas: fundo um tom mais claro, separado por filetes */
 .section-band {
-  border-block: 1px solid var(--border-section);
-  background: var(--surface-section);
+  border-block: 1px solid var(--border);
+  background: var(--bg-surface);
 }
 
 /* ─── Motion ─────────────────────────────────────────────── */
@@ -189,14 +189,6 @@ section {
     opacity: 1;
     transform: none;
   }
-
-  /* O traço do rótulo de seção cresce depois do texto */
-  .js .section-label.reveal::before {
-    width: 0;
-    transition: width 600ms 250ms var(--ease-out);
-  }
-
-  .js .section-label.reveal.is-visible::before { width: 1.5rem; }
 }
 
 /* ─── Fallback sem JavaScript ────────────────────────────── */
@@ -206,46 +198,49 @@ section {
 .noscript-fallback a { color: var(--blue-light); }
 
 /* ─── Section headers ────────────────────────────────────── */
+/* Seções numeradas: "01 / SOBRE". O contador roda no <main>; o rótulo
+ * de sub-bloco (Formação) usa .section-label--sub e não conta. */
+main { counter-reset: section; }
+
+.section-label:not(.section-label--sub) { counter-increment: section; }
+
+.section-label:not(.section-label--sub)::before {
+  content: counter(section, decimal-leading-zero) ' /';
+  color: var(--text-muted);
+}
+
 .hero-label,
 .section-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 1rem;
+  gap: 0.6rem;
+  margin: 0 0 1.1rem;
   color: var(--blue-light);
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
-.hero-label::before,
-.section-label::before {
-  width: 1.5rem;
-  height: 1px;
-  background: currentColor;
-  content: '';
-}
-
 h2.section-title {
-  max-width: 18ch;
-  margin: 0 0 0.85rem;
+  max-width: 20ch;
+  margin: 0 0 1rem;
   color: var(--text-primary);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
+  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
   text-wrap: balance;
 }
 
 .section-desc {
   max-width: 62ch;
-  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  margin: 0 0 clamp(2.5rem, 5vw, 3.75rem);
   color: var(--text-secondary);
   font-size: var(--fs-base);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */
@@ -254,13 +249,13 @@ h2.section-title {
 }
 
 @media (max-width: 640px) {
-  section { padding-block: 3.5rem; }
-  h2.section-title { font-size: clamp(1.75rem, 8vw, 2.4rem); }
+  section { padding-block: 3.75rem; }
+  h2.section-title { font-size: clamp(1.9rem, 9vw, 2.5rem); }
 }
 
 @media (max-width: 375px) {
   .container { padding-inline: 1rem; }
-  h2.section-title { font-size: 1.65rem; }
+  h2.section-title { font-size: 1.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

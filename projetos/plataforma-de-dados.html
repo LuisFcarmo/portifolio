@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma de Dados, IA & Observabilidade | Luis Cesar</title>
+  <meta name="description" content="A plataforma depende de dados de fontes externas heterogêneas (portais governamentais e e-commerces como Mercado Livre, Dell e Lenovo), publicados em HTML," />
+  <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
+  <link rel="stylesheet" href="../css/base.css?v=20261101" />
+  <link rel="stylesheet" href="../css/components.css?v=20261101" />
+  <link rel="stylesheet" href="../css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="../css/theme.css?v=20261101" />
+  <link rel="stylesheet" href="../css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="../css/project-page.css?v=20261101" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261101" />
+</head>
+<body class="project-page" data-theme="blue" id="top">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="../index.html#about">Sobre</a></li>
+        <li><a href="../index.html#experience">Experiência</a></li>
+        <li><a href="../index.html#projects" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="../index.html#stack">Stack</a></li>
+        <li><a href="../index.html#articles">Artigos</a></li>
+        <li class="nav-links-contact"><a href="../index.html#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta"><span class="status-dot" aria-hidden="true"></span>Fale comigo</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <span class="scroll-progress" aria-hidden="true"></span>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="pp-hero">
+      <div class="container">
+        <a href="../index.html#projects" class="pp-back"><span aria-hidden="true">←</span> Voltar aos projetos</a>
+        <p class="pp-eyebrow">Projeto 01 / 04 · Profissional</p>
+        <h1 class="pp-title">Plataforma de Dados, IA & Observabilidade</h1>
+        
+        <dl class="pp-facts">
+          <div><dt>Tipo</dt><dd>Profissional</dd></div>
+          <div><dt>Vínculo</dt><dd>Positivo Tecnologia, via CEIA/UFG</dd></div>
+          <div><dt>Papel</dt><dd>Data Platform Engineer Pleno</dd></div>
+          <div><dt>Status</dt><dd><span class="pp-fact-status pp-fact-status--ok">Em produção</span></dd></div>
+          <div><dt>Acesso</dt><dd>Código privado<span class="pp-fact-sub">Projeto corporativo confidencial</span></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div class="pp-block pp-brief reveal">
+        <p class="pp-kicker">Contexto</p>
+        <div class="project-brief">
+<div class="project-brief-item">
+<span class="project-section-title">Problema</span>
+<p>A plataforma depende de dados de fontes externas heterogêneas (portais governamentais e e-commerces como Mercado Livre, Dell e Lenovo), publicados em HTML, PDF e XLS/CSV, que precisam ser coletados continuamente e sem operação manual.</p>
+</div>
+<div class="project-brief-item">
+<span class="project-section-title">Solução</span>
+<p>Uma malha de ingestão orquestrada no Apache Airflow, com workers em AWS Batch e Fargate, data lake no S3 consultado via Glue e Athena, e uma camada de IA que enriquece e busca o dado coletado.</p>
+</div>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Resultado</p>
+        <div class="project-outcome">
+<span class="project-section-title">Resultado</span>
+<ul class="project-metrics">
+<li><strong>90k+</strong><span>jobs por dia</span></li>
+<li><strong>100%</strong><span>da infra AWS em Terraform</span></li>
+</ul>
+<p class="project-result">Ingestão contínua em produção, sem intervenção humana no dia a dia.</p>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Arquitetura</p>
+        <figure class="pipeline">
+<figcaption class="pipeline-caption">Arquitetura</figcaption>
+<ol class="pipeline-flow">
+<li class="pipeline-stage">
+<span class="stage-name">Fontes</span>
+<span class="stage-tech">Portais governamentais · e-commerces</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Coleta</span>
+<span class="stage-tech">Scrapy · Playwright · Selenium · API FastAPI</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Processamento</span>
+<span class="stage-tech">SQS · AWS Batch · Fargate · parsing PDF/XLS/CSV</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Data lake</span>
+<span class="stage-tech">S3 · Glue · Athena</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">IA &amp; busca</span>
+<span class="stage-tech">Bedrock · Agno · embeddings</span>
+</li>
+</ol>
+<ul class="pipeline-rails">
+<li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>Apache Airflow (90k+ jobs/dia) · Kubernetes · Argo</span></li>
+<li class="pipeline-rail"><span class="pipeline-rail-label">Infra &amp; ops</span><span>Terraform · Grafana · Unleash (feature flags)</span></li>
+</ul>
+</figure>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Decisões de engenharia</p>
+        <ol class="pp-decisions">
+          <li class="pp-decision reveal"><span class="pp-decision-n">01</span><div><strong>Infraestrutura só como código:</strong> toda a stack AWS (Batch, Fargate, EC2, S3, ECR, SQS, Glue, Athena) é provisionada em Terraform, sem configuração manual em produção.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">02</span><div><strong>Feature flags na coleta:</strong> a API interna em FastAPI centraliza as coletas síncronas e usa Unleash para ativar mudanças sem risco de downtime.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">03</span><div><strong>Validação antes da carga:</strong> o ETL faz parsing de PDF e XLS/CSV com validação automática antes de gravar no data lake.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">04</span><div><strong>Observabilidade padronizada:</strong> SDKs internos compartilhados e handlers de logs e métricas enviados ao Grafana.</div></li>
+        </ol>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Stack</p>
+        <div class="project-tags">
+<span class="tag"><i aria-hidden="true" class="devicon-python-plain colored"></i> Python</span>
+<span class="tag"><i aria-hidden="true" class="devicon-apacheairflow-plain colored"></i> Apache Airflow</span>
+<span class="tag"><i aria-hidden="true" class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+<span class="tag"><i aria-hidden="true" class="devicon-terraform-plain colored"></i> Terraform</span>
+<span class="tag"><i aria-hidden="true" class="devicon-kubernetes-plain colored"></i> Kubernetes / Argo</span>
+<span class="tag"><i aria-hidden="true" class="devicon-fastapi-plain colored"></i> FastAPI</span>
+<span class="tag"><i aria-hidden="true" class="devicon-grafana-plain colored"></i> Grafana</span>
+<span class="tag"><i aria-hidden="true" class="devicon-docker-plain colored"></i> Docker</span>
+</div>
+      </div>
+    </div>
+
+    <div class="pp-end">
+      <div class="container">
+        <p class="pp-kicker">Mais trabalhos</p>
+        <h2 class="pp-end-title">Veja os outros projetos</h2>
+        <div class="pp-end-actions">
+          <a href="../index.html#projects" class="btn-primary">Todos os projetos <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="lakehouse-medallion.html" class="btn-secondary">Próximo: Lakehouse <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a href="../index.html#contact" class="btn-secondary">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">LUIS CESAR<span>.</span></p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#top" class="footer-top">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261101" defer></script>
+</body>
+</html>

@@ -6,27 +6,58 @@
 
     <div class="exp-list timeline-track">
 
-      <!-- ─── Positivo Tecnologia ─────────────────────── -->
+      <!-- ─── Enel ────────────────────────────────────── -->
       <div class="exp-item exp-item--current reveal">
         <div class="exp-meta">
-          <p class="exp-period">Set 2024 — Atual</p>
+          <p class="exp-period">Ago 2026 — Atual</p>
+          <p class="exp-company">
+            <a href="https://www.enel.com.br/" target="_blank" rel="noopener" class="company-link" title="Enel Brasil">
+              Enel
+              <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </p>
+          <p class="exp-type">Projeto de PDI · via CEIA/UFG</p>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-title">DevOps &amp; Engenheiro de Dados Pleno</h3>
+          <ul class="exp-bullets">
+            <li><strong>Infraestrutura de dados do zero:</strong> Projeto e construo a base de dados da Enel na AWS, de ponta a ponta. Desenhei a fronteira entre os sistemas operacionais e a IA: ingestão batch e CDC (DMS/Debezium + Amazon MSK), Lakehouse em S3 com Apache Iceberg e camada de serving com contratos de leitura para os agentes.</li>
+            <li><strong>POC Medallion na AWS:</strong> Implementei o pipeline Raw → Silver → Gold em AWS Glue/Spark com Apache Iceberg, orquestrado por Step Functions e consultado no Athena.</li>
+            <li><strong>Segurança e deploy por padrão:</strong> Infra em Terraform com KMS, IAM de menor privilégio e contrato publicado no SSM, com releases imutáveis promovidas entre dev, QA e produção sem rebuild.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag"><i class="devicon-apachespark-original colored" aria-hidden="true"></i> Spark</span>
+            <span class="tag">Apache Iceberg</span>
+            <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored" aria-hidden="true"></i> Glue · Athena · Step Functions</span>
+            <span class="tag"><i class="devicon-terraform-plain colored" aria-hidden="true"></i> Terraform (IaC)</span>
+            <span class="tag">KMS &amp; IAM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Positivo Tecnologia ─────────────────────── -->
+      <div class="exp-item exp-item--current reveal d1">
+        <div class="exp-meta">
+          <p class="exp-period">Jan 2024 — Atual</p>
           <p class="exp-company">
             <a href="https://www.positivotecnologia.com.br/institucional/" target="_blank" rel="noopener" class="company-link" title="Positivo Tecnologia S/A — Institucional">
               Positivo Tecnologia S/A
               <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </p>
-          <p class="exp-type">CLT · Home Office</p>
+          <p class="exp-type">Tempo integral · Remoto · via CEIA/UFG</p>
         </div>
         <div class="exp-content">
           <h3 class="exp-title">Data Platform Engineer Pleno</h3>
+          <p class="exp-path"><span>Estágio · jan 2024</span><span>Júnior · ago 2024</span><span>Pleno · jan 2026</span></p>
           <ul class="exp-bullets">
             <li><strong>+90.000 jobs diários sem intervenção humana:</strong> Desenhei e mantenho a malha de DAGs no Apache Airflow, com Kubernetes/Argo, que sustenta a ingestão contínua de dados em larga escala.</li>
             <li><strong>Infraestrutura como código:</strong> Arquitetei e opero em Terraform toda a stack AWS da plataforma (Batch, Fargate, EC2, S3, ECR, SQS, Glue e Athena), sem configuração manual em produção.</li>
             <li><strong>ETL para o data lake:</strong> Automatizei pipelines de parsing de PDF e XLS/CSV com validação automática e carga no data lake.</li>
-            <li><strong>Coleta de dados:</strong> Construí crawlers com Scrapy, Playwright e Selenium que extraem dados de portais governamentais e e-commerces (Mercado Livre, Dell, Lenovo).</li>
             <li><strong>API de coleta com feature flags:</strong> Projetei a API interna em FastAPI que centraliza as coletas síncronas, com Unleash para ativar mudanças sem risco de downtime.</li>
             <li><strong>IA sobre os dados:</strong> Desenvolvi microsserviços de IA com agentes (Agno Agents) e LLMs via AWS Bedrock, além de busca semântica com embeddings vetoriais.</li>
+
+            <li><strong>Coleta de dados:</strong> Construí crawlers com Scrapy, Playwright e Selenium que extraem dados de portais governamentais e e-commerces (Mercado Livre, Dell, Lenovo).</li>
           </ul>
           <div class="exp-tags">
             <span class="tag"><i class="devicon-apacheairflow-plain colored" aria-hidden="true"></i> Airflow (+90k jobs)</span>
@@ -34,11 +65,11 @@
             <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored" aria-hidden="true"></i> AWS</span>
             <span class="tag"><i class="devicon-terraform-plain colored" aria-hidden="true"></i> Terraform (IaC)</span>
             <span class="tag"><i class="devicon-kubernetes-plain colored" aria-hidden="true"></i> Kubernetes / Argo</span>
-            <span class="tag"><i class="devicon-playwright-plain colored" aria-hidden="true"></i> Scrapy &amp; Playwright</span>
             <span class="tag"><i class="devicon-fastapi-plain colored" aria-hidden="true"></i> FastAPI</span>
             <span class="tag">Bedrock &amp; Agno</span>
             <span class="tag"><i class="devicon-grafana-plain colored" aria-hidden="true"></i> Grafana</span>
             <span class="tag"><i class="devicon-docker-plain colored" aria-hidden="true"></i> Docker</span>
+            <span class="tag"><i class="devicon-playwright-plain colored" aria-hidden="true"></i> Scrapy &amp; Playwright</span>
           </div>
         </div>
       </div>
@@ -79,37 +110,34 @@
       </div>
       -->
 
-      <!-- ─── Enel ────────────────────────────────────── -->
-      <div class="exp-item exp-item--current reveal d1">
-        <div class="exp-meta">
-          <p class="exp-period">Set 2026 — Atual</p>
-          <p class="exp-company">
-            <a href="https://www.enel.com.br/" target="_blank" rel="noopener" class="company-link" title="Enel Brasil">
-              Enel
-              <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </p>
-          <p class="exp-type">Arquitetura de dados · IA</p>
-        </div>
-        <div class="exp-content">
-          <h3 class="exp-title">DevOps &amp; Engenheiro de Dados Pleno</h3>
-          <ul class="exp-bullets">
-            <li><strong>Arquitetura para agentes de IA:</strong> Desenhei a fronteira entre os sistemas operacionais e a IA: ingestão batch e CDC (DMS/Debezium + Amazon MSK), Lakehouse em S3 com Apache Iceberg e camada de serving com contratos de leitura para os agentes.</li>
-            <li><strong>POC Medallion na AWS:</strong> Implementei o pipeline Raw → Silver → Gold em AWS Glue/Spark com Apache Iceberg, orquestrado por Step Functions e consultado no Athena.</li>
-            <li><strong>Segurança e deploy por padrão:</strong> Infra em Terraform com KMS, IAM de menor privilégio e contrato publicado no SSM, com releases imutáveis promovidas entre dev, QA e produção sem rebuild.</li>
-          </ul>
-          <div class="exp-tags">
-            <span class="tag"><i class="devicon-apachespark-original colored" aria-hidden="true"></i> Spark</span>
-            <span class="tag">Apache Iceberg</span>
-            <span class="tag"><i class="devicon-amazonwebservices-plain-wordmark colored" aria-hidden="true"></i> Glue · Athena · Step Functions</span>
-            <span class="tag"><i class="devicon-terraform-plain colored" aria-hidden="true"></i> Terraform (IaC)</span>
-            <span class="tag">KMS &amp; IAM</span>
-          </div>
-        </div>
-      </div>
+    </div>
 
+    <!-- ─── EDUCAÇÃO ──────────────────────────────────── -->
+    <hr class="education-divider" />
+
+    <p class="section-label section-label--sub reveal">Formação</p>
+
+    <div class="edu-card reveal">
+      <div class="exp-meta">
+        <p class="exp-period">Mar 2023 — Dez 2027</p>
+        <span class="exp-type">Em andamento</span>
+      </div>
+      <div>
+        <p class="edu-degree">Bacharelado em Ciência da Computação</p>
+        <p class="edu-institution">Universidade Federal de Goiás — UFG</p>
+        <p class="edu-period">Goiânia, GO · Previsão de Formatura: 2027</p>
+      </div>
+    </div>
+
+
+    <!-- ─── TRABALHO VOLUNTÁRIO ───────────────────────── -->
+    <hr class="education-divider" />
+
+    <p class="section-label section-label--sub reveal">Trabalho voluntário</p>
+
+    <div class="exp-list exp-list--sub">
       <!-- ─── Atlética UFG ────────────────────────────── -->
-      <div class="exp-item reveal d2">
+      <div class="exp-item reveal">
         <div class="exp-meta">
           <p class="exp-period">Jan 2024 — Dez 2024</p>
           <p class="exp-company">Atlética de Informática da UFG</p>
@@ -129,24 +157,6 @@
             <span class="tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
           </div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- ─── EDUCAÇÃO ──────────────────────────────────── -->
-    <hr class="education-divider" />
-
-    <p class="section-label reveal">Formação</p>
-
-    <div class="edu-card reveal">
-      <div class="exp-meta">
-        <p class="exp-period">Mar 2023 — Dez 2027</p>
-        <span class="exp-type">Em andamento</span>
-      </div>
-      <div>
-        <p class="edu-degree">Bacharelado em Ciência da Computação</p>
-        <p class="edu-institution">Universidade Federal de Goiás — UFG</p>
-        <p class="edu-period">Goiânia, GO · Previsão de Formatura: 2027</p>
       </div>
     </div>
 
