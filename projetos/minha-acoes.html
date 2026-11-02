@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MinhaAções | Luis Cesar</title>
+  <meta name="description" content="Pipeline diário de dados financeiros da B3: balanços oficiais da CVM, cotações, documentos e notícias viram indicadores, preço justo e um sinal para estudo por ação." />
+  <meta name="author" content="Luis Cesar Ferreira do Carmo" />
+  <meta name="theme-color" content="#080a0f" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css" />
+  <link rel="stylesheet" href="../css/base.css?v=20261101" />
+  <link rel="stylesheet" href="../css/components.css?v=20261101" />
+  <link rel="stylesheet" href="../css/nav.css?v=20261101" />
+  <link rel="stylesheet" href="../css/theme.css?v=20261102" />
+  <link rel="stylesheet" href="../css/sections/projects.css?v=20261101" />
+  <link rel="stylesheet" href="../css/project-page.css?v=20261102" />
+  <link rel="stylesheet" href="../css/footer.css?v=20261101" />
+</head>
+<body class="project-page" data-theme="green" id="top">
+  <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Luis Cesar, início"><span class="nav-logo-mark" aria-hidden="true">LC</span><span class="nav-logo-text" aria-hidden="true">Luis Cesar<span class="nav-logo-role">Data Platform Engineer</span></span></a>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="../index.html#about">Sobre</a></li>
+        <li><a href="../index.html#experience">Experiência</a></li>
+        <li><a href="../index.html#projects" class="active" aria-current="page">Projetos</a></li>
+        <li><a href="../index.html#stack">Stack</a></li>
+        <li><a href="../index.html#articles">Artigos</a></li>
+        <li class="nav-links-contact"><a href="../index.html#contact">Contato</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../index.html#contact" class="nav-cta"><span class="status-dot" aria-hidden="true"></span>Fale comigo</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu de navegação">
+          <svg class="hamburger-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="close-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <span class="scroll-progress" aria-hidden="true"></span>
+  </nav>
+
+  <main id="main-content">
+
+    <header class="pp-hero">
+      <div class="container">
+        <a href="../index.html#projects" class="pp-back"><span aria-hidden="true">←</span> Voltar aos projetos</a>
+        <p class="pp-eyebrow">Projeto 05 / 05 · Pessoal</p>
+        <h1 class="pp-title">MinhaAções</h1>
+        <p class="pp-subtitle">Pipeline de Dados Financeiros e Análise Fundamentalista da B3</p>
+        <dl class="pp-facts">
+          <div><dt>Tipo</dt><dd>Projeto pessoal</dd></div>
+          <div><dt>Vínculo</dt><dd>Uso próprio, na minha carteira de longo prazo</dd></div>
+          <div><dt>Papel</dt><dd>Projeto e desenvolvimento de ponta a ponta · engenharia de dados e full-stack</dd></div>
+          <div><dt>Status</dt><dd><span class="pp-fact-status pp-fact-status--ok">Em produção</span></dd></div>
+          <div><dt>Acesso</dt><dd>Login Google restrito a um e-mail<span class="pp-fact-sub">Código privado</span></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <figure class="pp-cover reveal">
+        <img src="../assets/projects/minha-acoes.jpg" width="1440" height="900" alt="Painel do MinhaAções com patrimônio, proventos, sinais, a carteira em 12 meses e a divisão por setor, com uma carteira fictícia" />
+      </figure>
+
+      <div class="pp-block pp-brief reveal">
+        <p class="pp-kicker">Contexto</p>
+        <div class="project-brief">
+<div class="project-brief-item">
+<span class="project-section-title">Problema</span>
+<p>Acompanhar uma carteira de dividendos na B3 exige juntar balanço da CVM, cotação, proventos, fatos relevantes e notícias de lugares diferentes. Os sites de indicadores misturam dados atrasados sem dizer de onde vêm, e um número errado vira uma decisão errada.</p>
+</div>
+<div class="project-brief-item">
+<span class="project-section-title">Solução</span>
+<p>Um pipeline que coleta tudo sozinho todo dia, trata os demonstrativos oficiais da CVM e transforma em indicadores, preço justo e um sinal para estudo por ação (aporte, manter ou avaliar venda), sempre com o motivo. O que muda nas empresas chega numa caixa de entrada com importância de 1 a 5, e o mais grave vai para o Telegram.</p>
+</div>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Resultado</p>
+        <div class="project-outcome">
+<span class="project-section-title">Resultado</span>
+<ul class="project-metrics">
+<li><strong>10</strong><span>coletas diárias automatizadas</span></li>
+<li><strong>15</strong><span>anos de balanços oficiais da CVM</span></li>
+<li><strong>449</strong><span>testes automatizados</span></li>
+</ul>
+<p class="project-result">Em produção na Vercel com Postgres no Neon e em uso diário na minha própria carteira: painel, carteira importada da B3, mercado dos setores perenes, FIIs, radar de eventos, tese por ação e backtest do sinal contra o Ibovespa.</p>
+</div>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Telas do sistema</p>
+        <div class="pp-gallery">
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-acao.jpg" width="1440" height="900" alt="Página da ação TAEE11 no MinhaAções" loading="lazy" />
+            <figcaption><strong>Página da ação</strong>Indicadores, o motivo do sinal, checklist de qualidade e abas de preço justo, proventos, tese, resultados, documentos e insiders.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-mercado.jpg" width="1440" height="900" alt="Tela Mercado do MinhaAções" loading="lazy" />
+            <figcaption><strong>Mercado</strong>As ações grandes, consolidadas e antigas dos setores perenes, com a margem de segurança de cada uma e dividendos contra P/VP.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-oportunidades.jpg" width="1440" height="900" alt="Tela Oportunidades do MinhaAções" loading="lazy" />
+            <figcaption><strong>Oportunidades</strong>As melhores de cada setor pelo escore de qualidade e preço, com comparação lado a lado.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-radar.jpg" width="1440" height="900" alt="Tela Radar do MinhaAções" loading="lazy" />
+            <figcaption><strong>Radar</strong>Caixa de entrada do que aconteceu nas empresas: resultados, documentos da CVM, insiders e notícias, com importância de 1 a 5.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-backtest.jpg" width="1440" height="900" alt="Tela Backtest do MinhaAções" loading="lazy" />
+            <figcaption><strong>Backtest</strong>Mais de 5 mil sinais recalculados mês a mês só com o que se sabia na data, e o retorno de cada um contra o Ibovespa.</figcaption>
+          </figure>
+          <figure class="pp-shot">
+            <img src="../assets/projects/minha-acoes-fiis.jpg" width="1440" height="900" alt="Tela FIIs do MinhaAções" loading="lazy" />
+            <figcaption><strong>FIIs</strong>Fundos imobiliários com o informe mensal da CVM, destaques por dividend yield, patrimônio e P/VP, e o IFIX.</figcaption>
+          </figure>
+        </div>
+        <p class="pp-note">Telas com uma carteira fictícia; os dados de mercado são reais.</p>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Arquitetura</p>
+        <figure class="pipeline">
+<figcaption class="pipeline-caption">Pipeline diário</figcaption>
+<ol class="pipeline-flow">
+<li class="pipeline-stage">
+<span class="stage-name">Fontes</span>
+<span class="stage-tech">CVM (DFP, ITR, IPE, VLMO) · Yahoo · Tesouro · BCB · notícias</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Coleta</span>
+<span class="stage-tech">10 rotinas isoladas, uma por workflow</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Tratamento</span>
+<span class="stage-tech">Séries anuais e trimestrais · fundamentos na data</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Análise</span>
+<span class="stage-tech">Indicadores · preço justo por setor · confiança do dado</span>
+</li>
+<li class="pipeline-stage">
+<span class="stage-name">Sinal</span>
+<span class="stage-tech">Aporte, manter ou venda · tese · Radar</span>
+</li>
+</ol>
+<ul class="pipeline-rails">
+<li class="pipeline-rail"><span class="pipeline-rail-label">Orquestração</span><span>GitHub Actions · workflow reutilizável · após o pregão · avisos no Telegram</span></li>
+<li class="pipeline-rail"><span class="pipeline-rail-label">Infra</span><span>FastAPI e Next.js na Vercel · Postgres no Neon · login Google de um único e-mail</span></li>
+</ul>
+</figure>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Decisões de engenharia</p>
+        <ol class="pp-decisions">
+          <li class="pp-decision reveal"><span class="pp-decision-n">01</span><div><strong>Um scraper por workflow:</strong> cada coleta é uma rotina própria com horário próprio, todas sobre o mesmo workflow reutilizável. Ficam fora do limite de 300 s da Vercel, e uma que falha fica vermelha sem derrubar as outras.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">02</span><div><strong>Fonte oficial primeiro:</strong> os fundamentos vêm dos demonstrativos da CVM, com o ticker ligado ao CNPJ pelo cadastro da empresa; o Yahoo fica para cotação, proventos e reserva. Cada armadilha dos dados abertos que já causou número errado (exercício anterior, zero que significa "não informado", ações em milhares) ganhou um teste.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">03</span><div><strong>Backtest sem olhar o futuro:</strong> o sinal é recalculado em cada fim de mês dos últimos 5, 10 ou 15 anos só com balanços já publicados e preços até a data, e o retorno em 12, 24 e 36 meses é comparado com o Ibovespa.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">04</span><div><strong>A qualidade do dado decide:</strong> cada ação recebe confiança alta, média ou baixa (balanço velho, P/L fora de faixa, lucro por ação calculado longe do publicado). Com confiança baixa, o sinal de aporte é bloqueado.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">05</span><div><strong>Regras por setor:</strong> banco é avaliado pelo P/VP justo (ROE contra custo de capital), transmissora pelo Bazin, e o Bazin exige o maior entre 6% e o juro real do Tesouro IPCA+ mais 1 ponto.</div></li>
+          <li class="pp-decision reveal"><span class="pp-decision-n">06</span><div><strong>IA sem API paga:</strong> quando sai um resultado, um comando monta o dossiê do trimestre (números, bandeiras contábeis, documentos da CVM e insiders) e o Claude Code escreve o relatório, que volta para a página da ação. O dossiê não leva valores da carteira.</div></li>
+        </ol>
+      </div>
+
+      <div class="pp-block reveal">
+        <p class="pp-kicker">Stack</p>
+        <div class="project-tags">
+<span class="tag"><i aria-hidden="true" class="devicon-python-plain colored"></i> Python</span>
+<span class="tag"><i aria-hidden="true" class="devicon-fastapi-plain colored"></i> FastAPI</span>
+<span class="tag"><i aria-hidden="true" class="devicon-pandas-plain colored"></i> Pandas</span>
+<span class="tag"><i aria-hidden="true" class="devicon-sqlalchemy-plain colored"></i> SQLAlchemy</span>
+<span class="tag"><i aria-hidden="true" class="devicon-postgresql-plain colored"></i> PostgreSQL (Neon)</span>
+<span class="tag"><i aria-hidden="true" class="devicon-githubactions-plain colored"></i> GitHub Actions</span>
+<span class="tag"><i aria-hidden="true" class="devicon-nextjs-plain"></i> Next.js</span>
+<span class="tag"><i aria-hidden="true" class="devicon-typescript-plain colored"></i> TypeScript</span>
+<span class="tag">Vercel</span>
+<span class="tag"><i aria-hidden="true" class="devicon-pytest-plain colored"></i> pytest</span>
+<span class="tag">Dados abertos da CVM</span>
+</div>
+      </div>
+    </div>
+
+    <div class="pp-end">
+      <div class="container">
+        <p class="pp-kicker">Mais trabalhos</p>
+        <h2 class="pp-end-title">Veja os outros projetos</h2>
+        <div class="pp-end-actions">
+          <a href="../index.html#projects" class="btn-primary">Todos os projetos <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="plataforma-de-dados.html" class="btn-secondary">Próximo: Plataforma <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          <a href="../index.html#contact" class="btn-secondary">Vamos conversar</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">LUIS CESAR<span>.</span></p>
+        <p>&copy; 2026 Luis Cesar Ferreira do Carmo</p>
+      </div>
+      <p class="footer-links">
+        <a href="https://github.com/LuisFcarmo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-cesar-ferreira-do-carmo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://medium.com/@luiscesar_53261" target="_blank" rel="noopener">Medium</a>
+        <a href="#top" class="footer-top">Voltar ao topo ↑</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=20261101" defer></script>
+</body>
+</html>

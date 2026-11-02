@@ -1,6 +1,6 @@
 /* ─── Temas por projeto ───────────────────────────────────────
  * Cada projeto tem uma cor própria (data-theme), escolhida pelo tema
- * dele: ciano para o lakehouse, rosa para o garimpo (as cores do app), argila para imóveis. Só redefine as variáveis do azul; o resto do site segue igual.
+ * dele: ciano para o lakehouse, rosa para o garimpo (as cores do app), argila para imóveis, verde para a carteira de ações. Só redefine as variáveis do azul; o resto do site segue igual.
  * O padrão (blue) vem de base.css.
  */
 [data-theme='cyan'] {
@@ -41,4 +41,15 @@
   --blue-glow: rgba(224, 121, 90, 0.15);
   --blue-border: rgba(240, 160, 131, 0.4);
   --border-focus: #f0a083;
+}
+
+/* MinhaAções: verde de mercado, a cor do sinal de aporte no app */
+[data-theme='green'] {
+  --blue: #2fbf71;
+  --blue-light: #74dfa3;
+  --blue-dim: rgba(47, 191, 113, 0.1);
+  --blue-faint: rgba(47, 191, 113, 0.05);
+  --blue-glow: rgba(47, 191, 113, 0.15);
+  --blue-border: rgba(116, 223, 163, 0.4);
+  --border-focus: #74dfa3;
 }
